@@ -27,12 +27,13 @@ onUnmounted(()=>
             :key="p.download_file_name"
             width="300px"
             class="mx-2 mt-2 hover-up"
-            :class="p?.unify_audio_done != '100%' ? 'disabled' : ''"
+            :class="p?.unify_audio_done != '100%' ? 'disabled-card' : ''"
             :to="'/projects/' + p.process_id"
-          >
+            >
             <v-img
               :src="'http://127.0.0.1:5000/'+p.img"
               class="align-end"
+              :class="p?.unify_audio_done != '100%' ? 'disabled-card-image' : ''"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               height="150px"
               cover
@@ -108,9 +109,11 @@ onUnmounted(()=>
 .hover-up:hover {
   transform: translateY(-5px); 
 }
-.disabled {
+.disabled-card {
   pointer-events: none; 
   cursor: wait;  
+}
+.disabled-card-image {
   opacity: 0.5;
 }
 </style>
