@@ -4,6 +4,11 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+      },
+    },
   },
   css: ['~/assets/main.scss'],
   modules: [
@@ -13,7 +18,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    "@pinia/nuxt"
+    "@pinia/nuxt",
   ],
   app: {
     head: {
@@ -33,5 +38,5 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
 })

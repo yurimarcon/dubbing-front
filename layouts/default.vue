@@ -47,7 +47,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-app-bar-title>Dubbing AI</v-app-bar-title>
-      <v-space></v-space>
+      <v-spacer></v-spacer>
       <ChooseTheme></ChooseTheme>
     </v-app-bar>
 
@@ -62,6 +62,11 @@ import { ref } from "vue";
 
 const drawer = ref(null);
 
-const items = [{ text: "Projects", icon: "mdi-folder", to: "/projects" }];
+const items = [
+  { text: "Translate Video", icon: "mdi-folder", to: "/projects" },
+  { text: "Translate Voice", icon: "mdi-folder", to: "/projects" },
+  { text: "Extract Transcript", icon: "mdi-folder", to: "/projects" },
+  { text: "Transcript Voice", icon: "mdi-folder", to: "/projects" },
+  { text: "Cut Video", icon: "mdi-folder", to: "/projects" },
+  ];
 </script>
-  
