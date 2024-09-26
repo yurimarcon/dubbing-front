@@ -1,47 +1,7 @@
 <script setup>
-import { ref } from "vue";
-
-// const dialog = ref(false);
-// const load = ref(false)
-
-const fileInput = ref();
-const source_lang = ref("");
-const target_lang = ref("");
-const user = ref("admin");
-
 import { useTranslateVideoStore } from '@/stores/translate_video'
-
 const videoStore = useTranslateVideoStore()
 
-// const change_load = ()=> load.value = !load.value
-
-// const uploadFile = async () => {
-//   change_load()
-  
-//   if (!fileInput.value || !source_lang.value || !target_lang.value){    
-//     change_load()
-//     return;
-//   } 
-
-//   const formData = new FormData();
-//   formData.append("file", fileInput.value); // Adiciona o arquivo
-//   formData.append("source_language", source_lang.value);
-//   formData.append("dest_language", target_lang.value);
-//   formData.append("user_name", user.value);
-
-//   try {
-//     await $fetch("http://127.0.0.1:5000/upload", {
-//       method: "POST",
-//       body: formData, // Envia o FormData com o arquivo e os dados do formulário
-//     })
-//       .then((res) => res.json())
-//       .then((res) => console.log(res));
-//   } catch (error) {
-//     console.error("Erro:", error); 
-//   }
-//   change_load()
-//   dialog.value = !dialog.value
-// };
 </script>
 
 <template>
@@ -68,11 +28,15 @@ const videoStore = useTranslateVideoStore()
         <v-card-text>
           <v-row dense>
             <v-file-input
-              label="File input w/ chips"
+              label="Input your .mp4"
               chips
+              accept="video/mp4"
               variant="outlined"
+              required
               clearable
-              v-model="fileInput"
+              show-size
+              @change="videoStore.getPresignedUrl()"
+              v-model="videoStore.fileInput"
             ></v-file-input>
           </v-row>
           <v-row dense>
@@ -82,7 +46,7 @@ const videoStore = useTranslateVideoStore()
                 label="Source Language"
                 required
                 variant="outlined"
-                v-model="source_lang"
+                v-model="videoStore.source_lang"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6">
@@ -91,7 +55,7 @@ const videoStore = useTranslateVideoStore()
                 label="Target Language"
                 required
                 variant="outlined"
-                v-model="target_lang"
+                v-model="videoStore.target_lang"
               ></v-select>
             </v-col>
           </v-row>
@@ -113,7 +77,7 @@ const videoStore = useTranslateVideoStore()
             color="primary"
             variant="flat"
             text="Send"
-            @click="videoStore.uploadVideo(fileInput, source_lang, target_lang, user)"
+            @click="videoStore.sendProcess()"
           ></v-btn>
         </v-card-actions>
       </v-card>

@@ -1,58 +1,118 @@
 import { defineStore } from "pinia";
+import {useUserStore} from './user'
 
 export const useTranslateVideoStore = defineStore("translate", {
   state: () => ({
     // url_base: "http://127.0.0.1:5000/",
     url_base: "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/api/",
+    url_persigned_to_upload: "",
     intervalId: null,
     videos: [],
     load_videos_screen: true,
     dialog_upload: false,
     load_upload: false,
+    fileInput: null,
+    source_lang: "",
+    target_lang: ""
   }),
   actions: {
     changeDialogUpload() {
       this.dialog_upload = !this.dialog_upload;
+      this.fileInput = null;
+      this.source_lang = "";
+      this.target_lang = "";
     },
     changeLoadUpload() {
       this.load_upload = !this.load_upload;
     },
-    async uploadVideo(fileInput, source_lang, target_lang, user) {
+    async getPresignedUrl(){
       this.changeLoadUpload();
+      const storeUser = useUserStore();
 
-      if (!fileInput || !source_lang || !target_lang) {
+      if (!this.fileInput || !storeUser.name){
         this.changeLoadUpload();
         return;
       }
 
-      const formData = new FormData();
-      formData.append("file", fileInput);
-      formData.append("source_language", source_lang);
-      formData.append("dest_language", target_lang);
-      formData.append("user_name", user);
+      try {
+
+        const url = `${this.url_base}storage/Get-GetPreSignedUrlRequest-Url?fileName=${this.fileInput.name}&userName=${storeUser.name}`;
+        this.url_persigned_to_upload = await $fetch(url);
+
+      } catch (error) {
+        console.error("Error during file upload:", error);
+      }
+      this.changeLoadUpload();
+    },
+    async sendProcess(){
+      this.changeLoadUpload();
+
+      if (!this.fileInput || !this.source_lang || !this.target_lang) {
+        this.changeLoadUpload();
+        return;
+      }
+
+      this.videoUpload();
+      this.createProcess();
+
+      this.changeLoadUpload();
+      this.changeDialogUpload();
+      this.getVideos();
+      
+    },
+    async videoUpload(){
+      this.changeLoadUpload();
+
+      if (!this.fileInput){
+        this.changeLoadUpload();
+        return;
+      }
 
       try {
-        await $fetch(this.url_base + "upload", {
+        await $fetch(this.url_persigned_to_upload ,{
+          method: "PUT",
+          body: fileInput,
+        });
+    
+      } catch (error) {
+        console.error("Error during file upload:", error);
+      }
+      this.changeLoadUpload();
+    },
+    async createProcess(){
+      const storeUser = useUserStore(); 
+      const data = {
+        "pk": "process-dubbing-video",
+        "sk": "admin 3",
+        "source_language": this.source_lang,
+        "dest_language": this.target_lang,
+        "user_name": storeUser.name,
+        "user_id": storeUser.id
+      }
+      
+      try {
+        await $fetch(`${this.url_base}process/createprocess`,{
           method: "POST",
-          body: formData,
+          body: data,
         }).then(res=> console.log(res))
       } catch (error) {
         console.error("Erro:", error);
       }
-      this.change_load();
-      this.changeDialogUpload();
-      this.getVideos();
+
     },
     start_interval() {
-      this.intervalId = setInterval(this.getVideos, 5000);
+      this.intervalId = setInterval(this.listProcess, 5000);
     },
     change_load() {
       this.load_videos_screen = !this.load_videos_screen;
     },
-    async getVideos() {
+    async listProcess() {
       this.change_load();
+      
+      const storeUser = useUserStore();
+      
       try {
-        await fetch(this.url_base + "/process-by-user?user_id=1")
+        await fetch(`${this.url_base}process/process-by-user?userId=${storeUser.id}`)
           .then((res) => {
             if (!res.ok) {
               throw new Error(`HTTP error! status: ${res.status}`);
@@ -60,6 +120,7 @@ export const useTranslateVideoStore = defineStore("translate", {
             return res.json();
           })
           .then((res) => {
+            console.log(res)
             let quantity_process_not_conclude = 0;
             res.forEach((p) => {
               if (p.unify_audio_done != "100%") quantity_process_not_conclude++;
@@ -67,7 +128,6 @@ export const useTranslateVideoStore = defineStore("translate", {
 
             if (res.length == 0) {
               clearInterval(this.intervalId);
-              console.log("sdsd");
             } else if (quantity_process_not_conclude == 0) {
               clearInterval(this.intervalId);
             } else {

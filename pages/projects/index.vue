@@ -2,7 +2,7 @@
 import { useTranslateVideoStore } from '~/stores/translate_video'
 
 const storeVideo = useTranslateVideoStore()
-storeVideo.getVideos()
+storeVideo.listProcess()
 
 onUnmounted(()=>
   clearInterval(storeVideo.intervalId)
@@ -31,13 +31,13 @@ onUnmounted(()=>
             :to="'/projects/' + p.process_id"
             >
             <v-img
-              :src="'http://127.0.0.1:5000/'+p.img"
+              :src="p.img ? 'http://127.0.0.1:5000/'+p.img : '/img/video.svg'"
               class="align-end"
               :class="p?.unify_audio_done != '100%' ? 'disabled-card-image' : ''"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               height="150px"
-              cover
-            >
+              >
+              <!-- cover -->
               <v-card-title
                 class="text-white d-flex aling-itens-center"
                 :textContent="p.source_lang + ' ➡️ ' + p.target_lang"
