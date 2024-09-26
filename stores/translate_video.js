@@ -120,7 +120,6 @@ export const useTranslateVideoStore = defineStore("translate", {
             return res.json();
           })
           .then((res) => {
-            console.log(res)
             let quantity_process_not_conclude = 0;
             res.forEach((p) => {
               if (p.unify_audio_done != "100%") quantity_process_not_conclude++;
