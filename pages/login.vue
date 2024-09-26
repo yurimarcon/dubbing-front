@@ -55,7 +55,7 @@ const remember = ref(false);
 
 const emailRules = [
   (v) => !!v || "Email is required",
-  (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+  //(v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
 ];
 const passwordRules = [
   (v) => !!v || "Password is required",
@@ -63,7 +63,7 @@ const passwordRules = [
 ];
 
 const login = () => {
-  if (email.value == "admin@gmail.com" && password.value == "123456") {
+  if (email.value == "admin" && password.value == "123456") {
     setCookie('auth', 'token_value', 7);
     router.push('/')
   }

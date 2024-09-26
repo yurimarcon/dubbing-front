@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 
 export const useTranslateVideoStore = defineStore("translate", {
   state: () => ({
-    url_base: "http://127.0.0.1:5000/",
+    // url_base: "http://127.0.0.1:5000/",
+    url_base: "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/api/",
     intervalId: null,
     videos: [],
     load_videos_screen: true,
