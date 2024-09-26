@@ -71,7 +71,7 @@ export const useTranslateVideoStore = defineStore("translate", {
       try {
         await $fetch(this.url_persigned_to_upload ,{
           method: "PUT",
-          body: fileInput,
+          body: this.fileInput,
         });
     
       } catch (error) {
