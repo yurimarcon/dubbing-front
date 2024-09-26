@@ -52,8 +52,8 @@ export const useTranslateVideoStore = defineStore("translate", {
         return;
       }
 
-      this.videoUpload();
-      this.createProcess();
+      await this.videoUpload();
+      await this.createProcess();
 
       this.changeLoadUpload();
       this.changeDialogUpload();
