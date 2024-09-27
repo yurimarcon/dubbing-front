@@ -67,7 +67,7 @@ const drawer = ref(null);
 const items = [
   { text: "Translate Video", icon: "mdi-folder", to: "/translateVideo" },
   { text: "Translate Voice", icon: "mdi-folder", to: "/translateVoice" },
-  { text: "Extract Transcript", icon: "mdi-folder", to: "/extractTranscript" },
+  { text: "Transcript Video", icon: "mdi-folder", to: "/transcriptVideo" },
   { text: "Transcript Voice", icon: "mdi-folder", to: "/transcriptVoice" },
   ];
 </script>
