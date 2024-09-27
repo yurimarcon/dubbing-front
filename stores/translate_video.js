@@ -15,7 +15,9 @@ export const useTranslateVideoStore = defineStore("translate", {
     load_upload: false,
     fileInput: null,
     source_lang: "",
-    target_lang: ""
+    target_lang: "",
+    storage_file_name: "",
+    process_type: "1"
   }),
   actions: {
     changeDialogUpload() {
@@ -38,8 +40,10 @@ export const useTranslateVideoStore = defineStore("translate", {
 
       try {
 
-        const url = `${this.url_base}storage/Get-GetPreSignedUrlRequest-Url?fileName=${this.fileInput.name}&userName=${storeUser.name}`;
-        this.url_persigned_to_upload = await $fetch(url);
+        const urlPresigned = `${this.url_base}storage/Get-GetPreSignedUrlRequest-Url?fileName=${this.fileInput.name}&userName=${storeUser.name}`;        
+        const {url, fileName} = await $fetch(urlPresigned);
+        this.url_persigned_to_upload = url;
+        this.storage_file_name = fileName;
 
       } catch (error) {
         console.error("Error during file upload:", error);
@@ -92,7 +96,9 @@ export const useTranslateVideoStore = defineStore("translate", {
           "target_lang": this.target_lang,
           "user_name": storeUser.name,
           "user_id": storeUser.id,
-          "original_file_name": this.fileInput.name 
+          "original_file_name": this.fileInput.name,
+          "original_file_path": this.storage_file_name,
+          "process_type": this.process_type
         }
         
         try {
