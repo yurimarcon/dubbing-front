@@ -71,7 +71,7 @@ onUnmounted(()=>
               color="lime"
               :model-value="parseInt(p?.transcript_audio_done?.slice(0,-1))"
               size="50"
-            >{{ p?.transcript_done }}</v-progress-circular>
+            >{{ p?.transcript_audio_done }}</v-progress-circular>
  
             <v-progress-circular
               color="secondary"
