@@ -1,8 +1,10 @@
 <script setup>
 import { useTranslateVideoStore } from '~/stores/translate_video'
-
 const storeVideo = useTranslateVideoStore()
-storeVideo.listProcess()
+
+onMounted(()=>{
+  storeVideo.listProcess()
+})
 
 onUnmounted(()=>
   clearInterval(storeVideo.intervalId)
@@ -13,31 +15,35 @@ onUnmounted(()=>
 <template>
   <v-container fluid>
       <load-page v-if="storeVideo.load_videos_screen && storeVideo.videos.length == 0"></load-page>
-      <v-row v-if="!storeVideo.load_videos_screen && storeVideo.videos.length == 0">
-        <strong class="mx-auto mt-16 text-secondary">You dont have any translation yet.</strong>
-      </v-row>
+      <div 
+      v-if="!storeVideo.load_videos_screen && storeVideo.videos.length == 0"
+      class="d-flex flex-column align-center mt-10"
+      >
+          <img 
+          src="/img/start.svg" 
+          width="300px"
+          />
+          <strong class="mx-auto mt-16 text-secondary">You dont have any translation yet.</strong>
+      </div>
       <v-row dense>
-        <NuxtLink 
-        class="d-flex flex-row justify-start align-center flex-sm-wrap" 
-        to="/projects"
-        
-        >
         <v-card
-            v-for="p in storeVideo.videos"
-            :key="p.download_file_name"
-            width="300px"
-            class="mx-2 mt-2 hover-up"
-            :class="p?.unify_audio_done != '100%' ? 'disabled-card' : ''"
-            :to="'/projects/' + p.process_id"
-            >
-            <v-img
+        v-for="p in storeVideo.videos"
+        :key="p.download_file_name"
+        width="300px"
+        class="mx-2 my-2 rounded-xl hover-up"
+        :class="p?.unify_audio_done != '100%' ? 'disabled-card' : ''"
+        >
+        <NuxtLink 
+        :to="'/projects/' + p.process_id"
+        >
+        <v-img
+        class="align-end"
               :src="p.img ? 'http://127.0.0.1:5000/'+p.img : '/img/video.svg'"
-              class="align-end"
               :class="p?.unify_audio_done != '100%' ? 'disabled-card-image' : ''"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               height="150px"
+              cover
               >
-              <!-- cover -->
               <v-card-title
                 class="text-white d-flex aling-itens-center"
                 :textContent="p.source_lang + ' ➡️ ' + p.target_lang"
@@ -55,14 +61,9 @@ onUnmounted(()=>
             </v-card-subtitle>
 
           <v-card-text class="d-flex justify-space-between">
+            
             <v-progress-circular
-              color="deep-orange-lighten-2"
-              :model-value="parseInt(p?.get_audito_done?.slice(0,-1))"
-              size="50"
-              >{{ p?.get_audio_done }}</v-progress-circular>
-              
-              <v-progress-circular
-              color="brown"
+            color="deep-orange-lighten-2"
               :model-value="parseInt(p?.split_audio_done?.slice(0,-1))"
               size="50"
               >{{ p?.split_audio_done }}</v-progress-circular>
@@ -86,8 +87,8 @@ onUnmounted(()=>
             >{{ p?.unify_audio_done }}</v-progress-circular>
           </v-card-text>
 
-          </v-card>
         </NuxtLink>
+          </v-card>
       </v-row>
     </v-container>
 </template>

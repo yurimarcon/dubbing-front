@@ -19,6 +19,17 @@ export default defineNuxtPlugin((app) => {
             success: '#4CAF50',
             warning: '#FFC107',
           }
+        },
+        dark:{
+          colors:{
+            primary: 'rgb(117, 89, 255)',
+            secondary: 'rgb(0, 191, 143)',
+            accent: '#82B1FF',
+            error: '#FF5252',
+            info: '#2196F3',
+            success: '#4CAF50',
+            warning: '#FFC107',
+          }
         }
       }
     }

@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import {useUserStore} from './user'
+import { useCustomAlertStore } from '@/stores/customAlert'
+
 
 export const useTranslateVideoStore = defineStore("translate", {
   state: () => ({
@@ -49,65 +51,67 @@ export const useTranslateVideoStore = defineStore("translate", {
 
       if (!this.fileInput || !this.source_lang || !this.target_lang) {
         this.changeLoadUpload();
-        return;
+        const alertStore = useCustomAlertStore();
+        alertStore.showAlert("Every fieal is required!!!", 4)
+        return false;
       }
-
       await this.videoUpload();
       await this.createProcess();
 
-      this.changeLoadUpload();
       this.changeDialogUpload();
-      this.getVideos();
-      
+      this.listProcess();
+      this.changeLoadUpload();
+      return true;
     },
     async videoUpload(){
-      this.changeLoadUpload();
-
-      if (!this.fileInput){
-        this.changeLoadUpload();
-        return;
-      }
-
-      try {
-        await $fetch(this.url_persigned_to_upload ,{
-          method: "PUT",
-          body: this.fileInput,
-        });
-    
-      } catch (error) {
-        console.error("Error during file upload:", error);
-      }
-      this.changeLoadUpload();
+      return new Promise(async(resolve, reject)=>{
+  
+        if (!this.fileInput){
+          return;
+        }
+  
+        try {
+          await $fetch(this.url_persigned_to_upload ,{
+            method: "PUT",
+            body: this.fileInput,
+          });
+          resolve();
+        } catch (error) {
+          console.error("Error during file upload:", error);
+          reject();
+        }
+      })
     },
     async createProcess(){
-      const storeUser = useUserStore(); 
-      const data = {
-        "pk": "process-dubbing-video",
-        "sk": "admin 3",
-        "source_language": this.source_lang,
-        "dest_language": this.target_lang,
-        "user_name": storeUser.name,
-        "user_id": storeUser.id
-      }
-      
-      try {
-        await $fetch(`${this.url_base}process/createprocess`,{
-          method: "POST",
-          body: data,
-        }).then(res=> console.log(res))
-      } catch (error) {
-        console.error("Erro:", error);
-      }
-
+      return new Promise(async(resolve, reject)=>{
+        const storeUser = useUserStore(); 
+        const data = {
+          "pk": "process-dubbing-video",
+          "sk": "admin 3",
+          "source_lang": this.source_lang,
+          "target_lang": this.target_lang,
+          "user_name": storeUser.name,
+          "user_id": storeUser.id,
+          "original_file_name": this.fileInput.name 
+        }
+        
+        try {
+          await $fetch(`${this.url_base}process/createprocess`,{
+            method: "POST",
+            body: data,
+          }).then(res=> console.log(res))
+          resolve()
+        } catch (error) {
+          console.error("Erro:", error);
+          reject();
+        }
+      })
     },
     start_interval() {
       this.intervalId = setInterval(this.listProcess, 5000);
     },
-    change_load() {
-      this.load_videos_screen = !this.load_videos_screen;
-    },
     async listProcess() {
-      this.change_load();
+      this.load_videos_screen = true;
       
       const storeUser = useUserStore();
       
@@ -143,7 +147,7 @@ export const useTranslateVideoStore = defineStore("translate", {
         if (!this.intervalId) this.start_interval();
         console.error("Failed to fetch data:", error);
       }
-      this.change_load();
+      this.load_videos_screen = false;
     },
     async downloadVideo(video_path) {
       await fetch(this.url_base + "/download?file_path=" + video_path)

@@ -2,6 +2,16 @@
 import { useTranslateVideoStore } from '@/stores/translate_video'
 const videoStore = useTranslateVideoStore()
 
+import { useCustomAlertStore } from '@/stores/customAlert'
+const alertStore = useCustomAlertStore();
+
+const send = () =>{
+  videoStore.sendProcess()
+  .then((res)=>{
+    if (res)
+      alertStore.showAlert("Process Created success!!!", 1)
+  });
+}
 </script>
 
 <template>
@@ -17,7 +27,11 @@ const videoStore = useTranslateVideoStore()
     ></v-btn>
 
     <v-dialog v-model="videoStore.dialog_upload" max-width="600">
-      <v-card prepend-icon="mdi-translate-variant" title="Upload video">
+      <v-card 
+      prepend-icon="mdi-translate-variant" 
+      title="Upload video" 
+      :disabled="videoStore.load_upload"
+      >
 
         <v-progress-linear
         v-if="videoStore.load_upload" 
@@ -77,7 +91,7 @@ const videoStore = useTranslateVideoStore()
             color="primary"
             variant="flat"
             text="Send"
-            @click="videoStore.sendProcess()"
+            @click="send()"
           ></v-btn>
         </v-card-actions>
       </v-card>
