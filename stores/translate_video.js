@@ -77,7 +77,7 @@ export const useTranslateVideoStore = defineStore("translate", {
         try {
           await $fetch(this.url_persigned_to_upload ,{
             method: "PUT",
-            body: this.fileInput,
+            body: this.fileInput
           });
           resolve();
         } catch (error) {
@@ -104,7 +104,7 @@ export const useTranslateVideoStore = defineStore("translate", {
         try {
           await $fetch(`${this.url_base}process/createprocess`,{
             method: "POST",
-            body: data,
+            body: data
           }).then(res=> console.log(res))
           resolve()
         } catch (error) {
