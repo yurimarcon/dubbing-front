@@ -34,7 +34,7 @@ onUnmounted(()=>
         :class="p?.unify_audio_done != '100%' ? 'disabled-card' : ''"
         >
         <NuxtLink 
-        :to="'/projects/' + p.process_id"
+        :to="'/translateVideo/' + p.process_id"
         >
         <v-img
         class="align-end"
