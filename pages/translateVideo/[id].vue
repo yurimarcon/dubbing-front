@@ -1,27 +1,31 @@
 <script setup>
 const { id } = useRoute().params;
-let video_path = "http://127.0.0.1:5000/";
+let base_url = "http://localhost:49988/";
+
 const { data: process } = await useFetch(
-  "http://127.0.0.1:5000/process-by-id?process_id=" + id
+  base_url + "api/process/get-by-process-id?processId=" + id
 );
-video_path +=
-  process.value.relative_path + "/" + process.value.download_file_name;
 
-import { useTranslateVideoStore } from '@/stores/translate_video'
-const videoStore = useTranslateVideoStore()
+// import { useTranslateVideoStore } from '@/stores/translate_video'
+// const videoStore = useTranslateVideoStore()
 
+const preUrlVideo = base_url + "api/storage/GetPreSignedUrlToWatchVideoByProcessId?processId=" + id
+const {data : urlPreSigned } = await useFetch(preUrlVideo)
 </script>
 
 <template>
   <v-container fluid fill-height>
     <v-row align="center" justify="center">
       <v-col cols="12" md="8" class="d-flex justify-center">
-        <v-card class="mx-auto" max-width="1200">
+        <v-card class="mx-auto" max-width="1200" max-height="100vh">
           <v-card-media>
             <!-- Video Player -->
             <v-responsive :aspect-ratio="16 / 9">
               <video controls>
-                <source :src="video_path" type="video/mp4" />
+                <source 
+                :src="urlPreSigned" 
+                type="video/mp4" 
+                />
                 Your browser does not support the video tag.
               </video>
             </v-responsive>
@@ -34,8 +38,10 @@ const videoStore = useTranslateVideoStore()
             color="primary" 
             text="Download" 
             variant="outlined"
-            @click="videoStore.downloadVideo(process.relative_path + '/' +process.download_file_name)"
+            :href="urlPreSigned"
+            download
             ></v-btn>
+            <!-- @click="videoStore.downloadVideo(process.relative_path + '/' +process.download_file_name)" -->
           </v-card-text>
         </v-card>
       </v-col>

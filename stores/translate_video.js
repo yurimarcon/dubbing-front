@@ -98,7 +98,8 @@ export const useTranslateVideoStore = defineStore("translate", {
           "user_id": storeUser.id,
           "original_file_name": this.fileInput.name,
           "original_file_path": this.storage_file_name,
-          "process_type": this.process_type
+          "process_type": this.process_type,
+          "type": 1
         }
         
         try {
