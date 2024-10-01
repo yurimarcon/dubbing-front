@@ -38,7 +38,7 @@ onUnmounted(()=>
         >
         <v-img
         class="align-end"
-              :src="p.img ? 'http://127.0.0.1:5000/'+p.img : '/img/video.svg'"
+              :src="p.unify_audio_done == '100%' ? '/img/video.svg' : '/img/cube-ai.gif'"
               :class="p?.unify_audio_done != '100%' ? 'disabled-card-image' : ''"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               height="150px"

@@ -1,9 +1,9 @@
 <template>
   <v-container
-    class="d-flex align-center justify-center fill-height full-width"
+    class="d-flex align-center justify-center fill-height full-width "
   >
-    <v-card class="elevation-12 card-custom" width="300">
-      <v-card-title class="justify-center">Login</v-card-title>
+    <v-card class="elevation-12 card-custom bg-init" width="300">
+      <v-card-title class="d-flex justify-center">Login</v-card-title>
 
       <v-card-text>
         <v-form>
@@ -29,11 +29,19 @@
       </v-card-text>
 
       <v-card-actions class="d-flex justify-center">
-        <v-btn color="primary" @click="login">Login</v-btn>
+        <v-btn 
+        color="primary" 
+        variant="flat"
+        @click="login"
+        >Login</v-btn>
       </v-card-actions>
 
       <v-card-actions class="d-flex justify-center">
-        <v-btn text @click="forgotPassword">Forgot Password?</v-btn>
+        <v-btn 
+        text
+        color="primary" 
+        @click="forgotPassword"
+        >Forgot Password?</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -46,7 +54,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 definePageMeta({
-  layout: "",
+  layout: "nologed",
 });
 
 const email = ref("");
@@ -59,13 +67,13 @@ const emailRules = [
 ];
 const passwordRules = [
   (v) => !!v || "Password is required",
-  (v) => v.length >= 6 || "Password must be at least 6 characters long",
+  (v) => v.length >= 4 || "Password must be at least 6 characters long",
 ];
 
 const login = () => {
-  if (email.value == "admin" && password.value == "123456") {
+  if (email.value == "admin" && password.value == "1234") {
     setCookie('auth', 'token_value', 7);
-    router.push('/')
+    router.push('/translateVideo')
   }
 };
 
@@ -80,7 +88,7 @@ function setCookie(name, value, days) {
 }
 
 const forgotPassword = () => {
-  alert("Redirect to forgot password...");
+  alert("In development...");
 };
 </script>
   
@@ -92,7 +100,11 @@ const forgotPassword = () => {
 
 .fill-height {
   min-height: 100vh;
-  background-color: #f3e5f5; /* Light purple background */
+  /* background-color: #f3e5f5; Light purple background */
+  background-color: #000000;
+  background-image: url('img/cyber.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .card-custom {
@@ -103,6 +115,9 @@ const forgotPassword = () => {
 
 .v-card-title {
   font-weight: bold;
-  color: #673ab7; /* Purple accent color */
+}
+
+bg-init{
+  
 }
 </style>

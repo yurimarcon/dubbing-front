@@ -1,6 +1,5 @@
 <template>
   <v-app id="inspire">
-
     <customAlert></customAlert>
 
     <v-navigation-drawer v-model="drawer">
@@ -14,7 +13,11 @@
               title="Admin"
             >
               <template v-slot:append>
-                <v-btn icon="mdi-translate-variant" size="small" variant="text"></v-btn>
+                <v-btn
+                  icon="mdi-translate-variant"
+                  size="small"
+                  variant="text"
+                ></v-btn>
               </template>
             </v-list-item>
             <CreateProject />
@@ -27,18 +30,25 @@
               v-for="(item, i) in items"
               :key="i"
               :value="item"
-              color="primary"
               :to="item.to"
             >
               <v-list-item>
                 <template v-slot:prepend>
                   <v-icon :icon="item.icon"></v-icon>
                 </template>
-
+                
                 <v-list-item-title :textContent="item.text"></v-list-item-title>
               </v-list-item>
             </NuxtLink>
           </v-list>
+          <v-list-item      
+          @click="logout()"
+          >
+            <template v-slot:prepend>
+              <v-icon icon="mdi-folder"></v-icon>
+            </template>
+            <v-list-item-title textContent="Log Out"></v-list-item-title>
+          </v-list-item>
         </v-navigation-drawer>
 
         <v-main style="height: 354px"></v-main>
@@ -69,5 +79,10 @@ const items = [
   { text: "Translate Voice", icon: "mdi-folder", to: "/translateVoice" },
   { text: "Transcript Video", icon: "mdi-folder", to: "/transcriptVideo" },
   { text: "Transcript Voice", icon: "mdi-folder", to: "/transcriptVoice" },
-  ];
+];
+
+const logout = () => {
+  document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  return navigateTo('/login');
+};
 </script>
