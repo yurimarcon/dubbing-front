@@ -10,7 +10,8 @@ function toggleTheme() {
 
 onMounted(()=>{
   let darkTheme = localStorage.getItem('theme');
-  theme.global.name.value = darkTheme;
+  if(darkTheme)
+    theme.global.name.value = darkTheme;
 })
 </script>
 
