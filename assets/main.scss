@@ -1,5 +1,9 @@
 $generic-text-color: #787878;
 
+html, body {
+  overflow-y: hidden;
+}
+
 body{
     font-family: "Nunito", system-ui;
     font-optical-sizing: auto;

@@ -60,7 +60,7 @@
 
       <v-app-bar-title>Dubbing AI</v-app-bar-title>
       <v-spacer></v-spacer>
-      <ChooseTheme></ChooseTheme>
+      <ChooseTheme class="mr-4"></ChooseTheme>
     </v-app-bar>
 
     <v-main>
