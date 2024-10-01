@@ -1,6 +1,7 @@
 <script setup>
 const { id } = useRoute().params;
-let base_url = "http://localhost:49988/";
+// let base_url = "http://localhost:49988/";
+let base_url = "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/";
 
 const { data: process } = await useFetch(
   base_url + "api/process/get-by-process-id?processId=" + id
