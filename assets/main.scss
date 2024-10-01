@@ -1,7 +1,12 @@
 $generic-text-color: #787878;
 
 html, body {
-  overflow-y: hidden;
+  overflow: hidden;
+  scrollbar-width: none; /* Para Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari e outros navegadores baseados em WebKit */
 }
 
 body{
