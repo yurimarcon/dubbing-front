@@ -4,7 +4,7 @@
       <SignInButton />
     </SignedOut>
     <SignedIn>
-      <UserButton/>
+      <UserButton />
     </SignedIn>
   </div>
 </template>

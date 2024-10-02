@@ -30,6 +30,7 @@ export default defineNuxtConfig({
         socialButtonsBlockButtonText: '',
         formButtonReset:'',
         membersPageInviteButton:'',
+        userButtonAvatarBox: '',
         card: '',
       },
     }

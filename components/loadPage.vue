@@ -9,7 +9,7 @@
           class="text-subtitle-1 text-center"
           cols="12"
         >
-          Getting your files
+          Loading...
         </v-col>
         <v-col cols="6">
           <v-progress-linear

@@ -144,7 +144,8 @@ export const useTranslateVideoStore = defineStore("translate", {
               if (!this.intervalId) this.start_interval();
             }
 
-            this.videos = res;
+            // this.videos = res;
+            this.videos = res.sort((a, b) => new Date(b.created_date) - new Date(a.created_date));
           })
           .catch((error) => {
             console.error("Fetch error:", error);

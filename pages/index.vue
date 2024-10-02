@@ -39,14 +39,14 @@ definePageMeta({
 </script>
   
 <style scoped>
-.v-main{
-  background-image: url("img/brain-ai.png") !important; /* Caminho para a sua imagem */
+.bg-init{
+  background-image: url("img/brain-ai.png") !important; 
   background-color: black;
-  background-size: cover; /* Ajusta a imagem para cobrir toda a área */
-  background-position: center; /* Centraliza a imagem */
-  background-repeat: no-repeat; /* Evita repetição da imagem */
-  height: 100vh; /* Define a altura como a tela inteira */
-  color: white; /* Deixa o texto branco */
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  height: 100vh; 
+  color: white; 
 }
 </style>
   
