@@ -23,6 +23,12 @@ export default defineNuxtConfig({
   clerk: {
     appearance: { },
   },
+  publicRuntimeConfig: {
+    clerkFrontendApi: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
+  },
+  privateRuntimeConfig: {
+    clerkApiKey: process.env.NUXT_CLERK_SECRET_KEY || '',
+  },
   app: {
     head: {
       htmlAttrs:{
