@@ -21,9 +21,8 @@ definePageMeta({
 
 .fill-height {
   min-height: 100vh;
-  /* background-color: #f3e5f5; Light purple background */
   background-color: #000000;
-  background-image: url("img/cyber.png");
+  background-image: url("/img/cyber.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

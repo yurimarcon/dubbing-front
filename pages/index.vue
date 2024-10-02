@@ -40,7 +40,7 @@ definePageMeta({
   
 <style scoped>
 .bg-init{
-  background-image: url("img/brain-ai.png") !important; 
+  background-image: url("/img/brain-ai.png") !important; 
   background-color: black;
   background-size: cover; 
   background-position: center; 
