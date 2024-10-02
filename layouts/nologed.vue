@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+  <ClerkLoaded>
     <v-app-bar color="primary" density="compact">
       <template v-slot:prepend>
         <NuxtLink to="/">
@@ -18,6 +19,7 @@
         <span>&copy; 2024 Video Translator - All rights reserved</span>
       </v-col>
     </v-footer>
+  </ClerkLoaded>
   </v-app>
 </template>
 

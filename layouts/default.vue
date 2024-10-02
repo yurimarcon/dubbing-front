@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+    <ClerkLoaded>
     <customAlert></customAlert>
 
     <v-navigation-drawer v-model="drawer">
@@ -64,6 +65,7 @@
     <v-main>
       <NuxtPage></NuxtPage>
     </v-main>
+  </ClerkLoaded>
   </v-app>
 </template>
   
