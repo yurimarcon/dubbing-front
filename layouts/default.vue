@@ -6,6 +6,7 @@
       <v-layout>
         <v-navigation-drawer absolute permanent>
           <v-list>
+            
             <v-list-item
               class="mt-6"
               prepend-avatar="https://raw.githubusercontent.com/yurimarcon/avatars/refs/heads/main/Colored/ToyFaces_Colored_BG_59.jpg"
@@ -41,14 +42,6 @@
               </v-list-item>
             </NuxtLink>
           </v-list>
-          <v-list-item      
-          @click="logout()"
-          >
-            <template v-slot:prepend>
-              <v-icon icon="mdi-folder"></v-icon>
-            </template>
-            <v-list-item-title textContent="Log Out"></v-list-item-title>
-          </v-list-item>
         </v-navigation-drawer>
 
         <v-main style="height: 354px"></v-main>
@@ -59,8 +52,13 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-app-bar-title>Dubbing AI</v-app-bar-title>
+      
       <v-spacer></v-spacer>
+      
       <ChooseTheme class="mr-4"></ChooseTheme>
+      
+      <button-profile class="mr-4"/>
+
     </v-app-bar>
 
     <v-main>
@@ -81,8 +79,4 @@ const items = [
   { text: "Transcript Voice", icon: "mdi-folder", to: "/transcriptVoice" },
 ];
 
-const logout = () => {
-  document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  return navigateTo('/login');
-};
 </script>

@@ -1,4 +1,12 @@
 <script setup>
+definePageMeta({
+  middleware: 'auth', 
+  auth: { 
+    authenticatedRedirectUrl: '/sign-in' 
+  } 
+})
+
+
 import { useTranslateVideoStore } from '~/stores/translate_video'
 const storeVideo = useTranslateVideoStore()
 

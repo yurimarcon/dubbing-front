@@ -1,6 +1,5 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
@@ -19,7 +18,11 @@ export default defineNuxtConfig({
       })
     },
     "@pinia/nuxt",
+    "vue-clerk/nuxt"
   ],
+  clerk: {
+    appearance: { },
+  },
   app: {
     head: {
       htmlAttrs:{

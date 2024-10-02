@@ -12,11 +12,11 @@
             translate, and download!
           </p>
 
-          <nuxt-link to="/login">
+          <nuxt-link to="/sign-in">
             <v-btn color="primary" class="ma-2"> Login </v-btn>
           </nuxt-link>
 
-          <nuxt-link to="/login">
+          <nuxt-link to="/sign-in">
             <v-btn color="secondary" outlined class="ma-2"> Learn More </v-btn>
           </nuxt-link>
 
@@ -29,8 +29,12 @@
 <script setup>
 
 definePageMeta({
-  layout: 'nologed' 
-});
+  layout: 'nologed',
+  middleware: 'guest', 
+  auth: { 
+    authenticatedRedirectUrl: '/sign-in' 
+  } 
+})
 
 </script>
   

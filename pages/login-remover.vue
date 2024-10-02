@@ -2,7 +2,10 @@
   <v-container
     class="d-flex align-center justify-center fill-height full-width "
   >
-    <v-card class="elevation-12 card-custom bg-init" width="300">
+  
+    <sign-in></sign-in>
+    <!-- <sign-up></sign-up> -->
+    <!-- <v-card class="elevation-12 card-custom bg-init" width="300">
       <v-card-title class="d-flex justify-center">Login</v-card-title>
 
       <v-card-text>
@@ -43,7 +46,7 @@
         @click="forgotPassword"
         >Forgot Password?</v-btn>
       </v-card-actions>
-    </v-card>
+    </v-card> -->
   </v-container>
 </template>
   
@@ -117,7 +120,4 @@ const forgotPassword = () => {
   font-weight: bold;
 }
 
-bg-init{
-  
-}
 </style>
