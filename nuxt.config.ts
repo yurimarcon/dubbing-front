@@ -1,6 +1,7 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
+  devtools: { enabled: false },
   build: {
     transpile: ['vuetify'],
     loaders: {
@@ -21,7 +22,17 @@ export default defineNuxtConfig({
     "vue-clerk/nuxt"
   ],
   clerk: {
-    appearance: { },
+    appearance: { 
+      variables: { colorPrimary: 'rgb(117, 89, 255)' },
+      elements: {
+        formButtonPrimary:'',
+        socialButtonsBlockButton:'',
+        socialButtonsBlockButtonText: '',
+        formButtonReset:'',
+        membersPageInviteButton:'',
+        card: '',
+      },
+    }
   },
   publicRuntimeConfig: {
     clerkFrontendApi: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',

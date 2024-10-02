@@ -9,6 +9,7 @@
   <script setup>
 definePageMeta({
   layout: "nologed",
+  middleware: 'guest'
 });
 </script>
   

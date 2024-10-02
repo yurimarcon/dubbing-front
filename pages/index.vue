@@ -39,8 +39,8 @@ definePageMeta({
 </script>
   
 <style scoped>
-.bg-init {
-  background-image: url("img/brain-ai.png"); /* Caminho para a sua imagem */
+.v-main{
+  background-image: url("img/brain-ai.png") !important; /* Caminho para a sua imagem */
   background-color: black;
   background-size: cover; /* Ajusta a imagem para cobrir toda a área */
   background-position: center; /* Centraliza a imagem */

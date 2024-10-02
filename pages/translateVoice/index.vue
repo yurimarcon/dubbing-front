@@ -9,3 +9,12 @@
           <strong class="mx-auto mt-16 text-secondary">You dont have any translation yet.</strong>
       </div>
 </template>
+
+<script setup>
+definePageMeta({ 
+  middleware: 'auth', 
+  auth: { 
+    guestRedirectUrl: '/sign-in' 
+  } 
+})
+</script>
