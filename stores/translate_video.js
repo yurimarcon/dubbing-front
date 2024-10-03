@@ -14,10 +14,11 @@ export const useTranslateVideoStore = defineStore("translate", {
     dialog_upload: false,
     load_upload: false,
     fileInput: null,
+    link_web_media: null,
     source_lang: "",
     target_lang: "",
     storage_file_name: "",
-    process_type: "1"
+    process_type: 1
   }),
   actions: {
     changeDialogUpload() {
@@ -50,16 +51,29 @@ export const useTranslateVideoStore = defineStore("translate", {
       }
       this.changeLoadUpload();
     },
-    async sendProcess(){
+    async sendProcess(process_type){
       this.changeLoadUpload();
+      const alertStore = useCustomAlertStore();
+      this.process_type = process_type
 
-      if (!this.fileInput || !this.source_lang || !this.target_lang) {
+      if(process_type == 1 && !this.fileInput){
+        alertStore.showAlert("File is required!!!", 4)
         this.changeLoadUpload();
-        const alertStore = useCustomAlertStore();
-        alertStore.showAlert("Every fieal is required!!!", 4)
         return false;
       }
-      await this.videoUpload();
+      if(process_type == 2 && !this.link_web_media){
+        alertStore.showAlert("Web media link is required!!!", 4)
+        this.changeLoadUpload();
+        return false;
+      }
+      if (!this.source_lang || !this.target_lang) {
+        alertStore.showAlert("Every fieal is required!!!", 4)
+        this.changeLoadUpload();
+        return false;
+      }
+      if(process_type == 1)
+        await this.videoUpload();
+      
       await this.createProcess();
 
       this.changeDialogUpload();
@@ -96,10 +110,10 @@ export const useTranslateVideoStore = defineStore("translate", {
           "target_lang": this.target_lang,
           "user_name": storeUser.name,
           "user_id": storeUser.id,
-          "original_file_name": this.fileInput.name,
-          "original_file_path": this.storage_file_name,
-          "process_type": this.process_type,
-          "type": 1
+          "original_file_name": this.process_type == 1 ? this.fileInput?.name : "",
+          "original_file_path": this.process_type == 1 ? this.storage_file_name : "",
+          "type": this.process_type,
+          "link_web_midea": this.link_web_media
         }
         
         try {
@@ -180,5 +194,14 @@ export const useTranslateVideoStore = defineStore("translate", {
           console.error("Erro ao baixar o arquivo:", error);
         });
     },
+    async deleteProcess(processId){
+
+      var url = this.url_base + "process/delete-process-by-process-id?processId=" + processId
+      await $fetch(url,{
+        method: "DELETE"
+      });
+
+      this.listProcess();
+    }
   },
 });
