@@ -128,6 +128,6 @@ onUnmounted(()=>
   cursor: wait;  
 }
 .disabled-card-image {
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 </style>
