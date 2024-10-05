@@ -14,23 +14,32 @@ onMounted(() => {
 });
 
 onUnmounted(() => clearInterval(storeVideo.intervalId));
-
 </script>
 
 <template>
   <v-container fluid>
+    <v-row dense>
+      <v-col>
+        <CreateProject />
+      </v-col>
+      <v-divider class="mb-4" />
+    </v-row>
     <load-page
       v-if="storeVideo.load_videos_screen && storeVideo.videos.length == 0"
     ></load-page>
-    <div
-      v-if="!storeVideo.load_videos_screen && storeVideo.videos.length == 0"
-      class="d-flex flex-column align-center mt-10"
+    <v-row
+    v-if="!storeVideo.load_videos_screen && storeVideo.videos.length == 0"
     >
-      <img src="/img/start.svg" width="300px" />
-      <strong class="mx-auto mt-16 text-secondary"
-        >You dont have any translation yet.</strong
+      <v-col
+      class="d-flex flex-column align-center"
       >
-    </div>
+        <img src="/img/start.svg" width="300px" />
+        <strong class="mx-auto mt-16 text-secondary"
+          >You dont have any translation yet.</strong
+        >
+
+      </v-col>
+    </v-row>
     <v-row dense>
       <v-card
         v-for="p in storeVideo.videos"
@@ -58,9 +67,8 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
               ></v-card-title>
             </v-img>
           </NuxtLink>
-          
-          <card-menu :processId="p.process_id" />
 
+          <card-menu :processId="p.process_id" />
         </div>
 
         <v-card-title

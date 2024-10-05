@@ -6,6 +6,7 @@ import { useCustomAlertStore } from "@/stores/customAlert";
 const alertStore = useCustomAlertStore();
 
 const tab = ref(null);
+const languages = ['en', 'es', 'fr', 'ar', 'pt'];
 
 const send = () => {
   // if not change the tab did mean is first tab
@@ -40,8 +41,14 @@ const send = () => {
         ></v-progress-linear>
 
         <v-tabs v-model="tab" align-tabs="center" color="primary">
-          <v-tab value="1">Upload Video</v-tab>
-          <v-tab value="2">YouTube video</v-tab>
+          <v-tab value="1">
+            <v-icon icon="mdi-upload-box" class="mr-2"></v-icon>
+            Upload Video
+          </v-tab>
+          <v-tab value="2">
+            <v-icon icon="mdi-youtube" class="mr-2"></v-icon>
+            YouTube video
+          </v-tab>
         </v-tabs>
 
         <v-tabs-window v-model="tab">
@@ -60,6 +67,15 @@ const send = () => {
                     @change="videoStore.getPresignedUrl()"
                     v-model="videoStore.fileInput"
                   ></v-file-input>
+                </v-row>
+                <v-row 
+                v-if="videoStore.progress_upload"
+                >
+                  <v-progress-linear
+                    v-model="videoStore.progress_upload"
+                    :buffer-value="bufferValue"
+                    color="primary"
+                  ></v-progress-linear>
                 </v-row>
               </v-card-text>
             </v-container>
@@ -83,7 +99,7 @@ const send = () => {
           <v-row dense>
             <v-col cols="12" sm="6">
               <v-select
-                :items="['en', 'es', 'fr', 'pt', 'ar']"
+                :items="languages"
                 label="Source Language"
                 required
                 variant="outlined"
@@ -92,7 +108,7 @@ const send = () => {
             </v-col>
             <v-col cols="12" sm="6">
               <v-select
-                :items="['en', 'es', 'fr', 'pt', 'ar']"
+                :items="languages"
                 label="Target Language"
                 required
                 variant="outlined"

@@ -13,6 +13,7 @@ export const useTranslateVideoStore = defineStore("translate", {
     load_videos_screen: true,
     dialog_upload: false,
     load_upload: false,
+    progress_upload: 0,
     fileInput: null,
     link_web_media: null,
     source_lang: "",
@@ -26,6 +27,8 @@ export const useTranslateVideoStore = defineStore("translate", {
       this.fileInput = null;
       this.source_lang = "";
       this.target_lang = "";
+      this.link_web_media = "";
+      this.progress_upload = 0;
     },
     changeLoadUpload() {
       this.load_upload = !this.load_upload;
@@ -87,18 +90,35 @@ export const useTranslateVideoStore = defineStore("translate", {
         if (!this.fileInput){
           return;
         }
-  
-        try {
-          await $fetch(this.url_persigned_to_upload ,{
-            method: "PUT",
-            body: this.fileInput
+
+        // request with XMLHttpRequest to watch progress upload
+        try{
+          const xhr = new XMLHttpRequest();
+          xhr.upload.addEventListener('progress', (e) => {
+            if (e.lengthComputable) {
+              this.progress_upload = (e.loaded / e.total) * 100;
+            }
           });
-          resolve();
-        } catch (error) {
+          xhr.open("PUT", this.url_persigned_to_upload, true);
+          xhr.setRequestHeader("Content-Type", this.fileInput.type);
+          xhr.onload = () => {
+            if (xhr.status === 200) {
+              resolve();
+            } else {
+              reject();
+            }
+          };
+          xhr.onerror = () => {
+            console.error('Erro de rede');
+            reject();
+          };
+          xhr.send(this.fileInput);
+        }
+        catch(error){
           console.error("Error during file upload:", error);
           reject();
-        }
-      })
+        } 
+    })
     },
     async createProcess(){
       return new Promise(async(resolve, reject)=>{
@@ -120,8 +140,7 @@ export const useTranslateVideoStore = defineStore("translate", {
           await $fetch(`${this.url_base}process/createprocess`,{
             method: "POST",
             body: data
-          }).then(res=> console.log(res))
-          resolve()
+          }).then(()=> resolve())
         } catch (error) {
           console.error("Erro:", error);
           reject();

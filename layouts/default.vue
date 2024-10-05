@@ -1,3 +1,32 @@
+<script setup>
+import { useUserStore } from '@/stores/user'
+const storeUser = useUserStore();
+
+// // Clerk user
+const { user } = useUser();
+
+watchEffect(() => {
+  if (user.value) {
+    storeUser.setUser(
+      user.value.fullName, 
+      user.value.id, 
+      user.value.primaryEmailAddress?.emailAddress
+    );
+  }
+});
+
+const drawer = ref(null);
+
+const items = [
+  { text: "Translate Video", icon: "mdi-video-vintage", to: "/translateVideo" },
+  { text: "Translate Audio", icon: "mdi-volume-high", to: "/translateVoice" },
+  { text: "Transcript Video", icon: "mdi-script-text-play", to: "/transcriptVideo" },
+  { text: "Transcript Audio", icon: "mdi-speaker-message", to: "/transcriptVoice" },
+  { text: "Generate audio from text", icon: "mdi-clipboard-text-play", to: "/transcriptVoice" },
+];
+
+</script>
+
 <template>
   <v-app id="inspire">
     <ClerkLoading>
@@ -19,21 +48,6 @@
                   <v-list-item-subtitle>{{ user?.primaryEmailAddress?.emailAddress }}</v-list-item-subtitle>
                 </v-col>
               </v-row>
-              <!-- <v-list-item
-              class="mt-6"
-              prepend-avatar="https://raw.githubusercontent.com/yurimarcon/avatars/refs/heads/main/Colored/ToyFaces_Colored_BG_59.jpg"
-              subtitle="admin@gmail.com"
-              title="Admin"
-            >
-              <template v-slot:append>
-                <v-btn
-                  icon="mdi-translate-variant"
-                  size="small"
-                  variant="text"
-                ></v-btn>
-              </template>
-            </v-list-item> -->
-              <CreateProject />
             </v-list>
 
             <v-divider></v-divider>
@@ -78,21 +92,6 @@
     </ClerkLoaded>
   </v-app>
 </template>
-  
-<script setup>
-const { user } = useUser();
-
-console.log("user =>", user?.value)
-
-const drawer = ref(null);
-
-const items = [
-  { text: "Translate Video", icon: "mdi-folder", to: "/translateVideo" },
-  { text: "Translate Voice", icon: "mdi-folder", to: "/translateVoice" },
-  { text: "Transcript Video", icon: "mdi-folder", to: "/transcriptVideo" },
-  { text: "Transcript Voice", icon: "mdi-folder", to: "/transcriptVoice" },
-];
-</script>
 
 <style>
 .cl-internal-1j7ahlv{
