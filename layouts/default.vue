@@ -1,6 +1,8 @@
 <script setup>
 import { useUserStore } from '@/stores/user'
+import { useStripeStore } from '@/stores/stripe'
 const storeUser = useUserStore();
+const storeStripe = useStripeStore()
 
 // // Clerk user
 const { user } = useUser();
@@ -15,14 +17,23 @@ watchEffect(() => {
   }
 });
 
+onMounted( async ()=>{
+  setTimeout(async() => {
+    if(storeUser?.id)
+      storeUser.getUserOnDatabase();
+  }, 3000)
+})
+
 const drawer = ref(null);
 
 const items = [
   { text: "Translate Video", icon: "mdi-video-vintage", to: "/translateVideo" },
-  { text: "Translate Audio", icon: "mdi-volume-high", to: "/translateVoice" },
-  { text: "Transcript Video", icon: "mdi-script-text-play", to: "/transcriptVideo" },
-  { text: "Transcript Audio", icon: "mdi-speaker-message", to: "/transcriptVoice" },
-  { text: "Generate audio from text", icon: "mdi-clipboard-text-play", to: "/transcriptVoice" },
+  { text: "Plans", icon: "mdi-handshake", to: "/plans" },
+  // { text: "Manage Account", icon: "mdi-laptop-account", to: "/plans" },
+  // { text: "Translate Audio", icon: "mdi-volume-high", to: "/translateVoice" },
+  // { text: "Transcript Video", icon: "mdi-script-text-play", to: "/transcriptVideo" },
+  // { text: "Transcript Audio", icon: "mdi-speaker-message", to: "/transcriptVoice" },
+  // { text: "Generate audio from text", icon: "mdi-clipboard-text-play", to: "/transcriptVoice" },
 ];
 
 </script>
@@ -69,7 +80,20 @@ const items = [
                   ></v-list-item-title>
                 </v-list-item>
               </NuxtLink>
+
+              <v-list-item
+              @click="storeStripe.createPortalSession(storeUser?.user_db?.stripe_id)"
+              >
+                  <template v-slot:prepend>
+                    <v-icon icon="mdi-laptop-account"></v-icon>
+                  </template>
+
+                  <v-list-item-title
+                    textContent="Menage Account"
+                  ></v-list-item-title>
+                </v-list-item> 
             </v-list>
+
           </v-navigation-drawer>
 
           <v-main style="height: 354px"></v-main>

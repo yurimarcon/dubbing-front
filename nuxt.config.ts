@@ -1,14 +1,13 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
   build: {
     transpile: ['vuetify'],
-    loaders: {
-      scss: {
-        implementation: require('sass'),
-      },
-    },
+    // loaders: {
+    //   scss: {
+    //     implementation: require('sass'),
+    //   },
+    // },
   },
   css: ['~/assets/main.scss'],
   modules: [
@@ -35,12 +34,12 @@ export default defineNuxtConfig({
       },
     }
   },
-  publicRuntimeConfig: {
-    clerkFrontendApi: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
-  },
-  privateRuntimeConfig: {
-    clerkApiKey: process.env.NUXT_CLERK_SECRET_KEY || '',
-  },
+  // publicRuntimeConfig: {
+  //   clerkFrontendApi: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
+  // // },
+  // privateRuntimeConfig: {
+  //   clerkApiKey: process.env.NUXT_CLERK_SECRET_KEY || '',
+  // },
   app: {
     head: {
       htmlAttrs:{
@@ -50,6 +49,9 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {rel: 'preconnect', href: 'https://fonts.gstatic.com'},
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap'}
+      ],
+      script:[
+        { src: 'https://js.stripe.com/v3/pricing-table.js' }
       ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }
