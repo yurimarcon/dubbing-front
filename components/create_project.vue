@@ -6,12 +6,12 @@ import { useCustomAlertStore } from "@/stores/customAlert";
 const alertStore = useCustomAlertStore();
 
 const tab = ref(null);
-const languages = ['en', 'es', 'fr', 'ar', 'pt'];
+const languages = ["en", "es", "fr", "ar", "pt"];
 
 const send = () => {
   // if not change the tab did mean is first tab
-  if(!tab) tab.value = 1
-  const process_type = tab.value 
+  if (!tab) tab.value = 1;
+  const process_type = tab.value;
   videoStore.sendProcess(process_type).then((res) => {
     if (res) alertStore.showAlert("Process Created success!!!", 1);
   });
@@ -20,10 +20,11 @@ const send = () => {
 
 <template>
   <div class="pa-4 text-center">
+    <!-- class="flax-grow-1" -->
+    <!-- rounded="lg" -->
     <v-btn
-      class="flax-grow-1"
+      class="rounded-pill"
       prepend-icon="mdi-translate-variant"
-      rounded="lg"
       variant="flat"
       text="Translate"
       color="primary"
@@ -42,17 +43,30 @@ const send = () => {
 
         <v-tabs v-model="tab" align-tabs="center" color="primary">
           <v-tab value="1">
-            <v-icon icon="mdi-upload-box" class="mr-2"></v-icon>
-            Upload Video
-          </v-tab>
-          <v-tab value="2">
             <v-icon icon="mdi-youtube" class="mr-2"></v-icon>
             YouTube video
+          </v-tab>
+          <v-tab value="2">
+            <v-icon icon="mdi-upload-box" class="mr-2"></v-icon>
+            Upload Video
           </v-tab>
         </v-tabs>
 
         <v-tabs-window v-model="tab">
           <v-tabs-window-item value="1">
+            <v-container>
+              <v-row>
+                <v-card-text>
+                  <v-text-field
+                    label="Media link"
+                    variant="outlined"
+                    v-model="videoStore.link_web_media"
+                  ></v-text-field>
+                </v-card-text>
+              </v-row>
+            </v-container>
+          </v-tabs-window-item>
+          <v-tabs-window-item value="2">
             <v-container fluid>
               <v-card-text>
                 <v-row dense>
@@ -68,9 +82,7 @@ const send = () => {
                     v-model="videoStore.fileInput"
                   ></v-file-input>
                 </v-row>
-                <v-row 
-                v-if="videoStore.progress_upload"
-                >
+                <v-row v-if="videoStore.progress_upload">
                   <v-progress-linear
                     v-model="videoStore.progress_upload"
                     :buffer-value="bufferValue"
@@ -80,19 +92,7 @@ const send = () => {
               </v-card-text>
             </v-container>
           </v-tabs-window-item>
-          <v-tabs-window-item value="2">
-            <v-container>
-              <v-row>
-                <v-card-text>
-                  <v-text-field
-                  label="Media link" 
-                  variant="outlined"
-                  v-model="videoStore.link_web_media" 
-                  ></v-text-field>
-                </v-card-text>
-              </v-row>
-            </v-container>
-          </v-tabs-window-item>
+          
         </v-tabs-window>
 
         <v-card-text>
@@ -124,6 +124,7 @@ const send = () => {
           <v-spacer></v-spacer>
 
           <v-btn
+            class="rounded-pill"
             text="Close"
             variant="outlined"
             color="primary"
@@ -131,6 +132,7 @@ const send = () => {
           ></v-btn>
 
           <v-btn
+            class="rounded-pill"
             color="primary"
             variant="flat"
             text="Send"

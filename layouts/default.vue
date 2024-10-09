@@ -28,8 +28,8 @@ const drawer = ref(null);
 
 const items = [
   { text: "Translate Video", icon: "mdi-video-vintage", to: "/translateVideo" },
-  { text: "Plans", icon: "mdi-handshake", to: "/plans" },
-  // { text: "Manage Account", icon: "mdi-laptop-account", to: "/plans" },
+  { text: "Manage Plan", icon: "mdi-laptop-account", to: "/account" },
+  // { text: "Plans", icon: "mdi-handshake", to: "/plans" },
   // { text: "Translate Audio", icon: "mdi-volume-high", to: "/translateVoice" },
   // { text: "Transcript Video", icon: "mdi-script-text-play", to: "/transcriptVideo" },
   // { text: "Transcript Audio", icon: "mdi-speaker-message", to: "/transcriptVoice" },
@@ -81,17 +81,6 @@ const items = [
                 </v-list-item>
               </NuxtLink>
 
-              <v-list-item
-              @click="storeStripe.createPortalSession(storeUser?.user_db?.stripe_id)"
-              >
-                  <template v-slot:prepend>
-                    <v-icon icon="mdi-laptop-account"></v-icon>
-                  </template>
-
-                  <v-list-item-title
-                    textContent="Menage Account"
-                  ></v-list-item-title>
-                </v-list-item> 
             </v-list>
 
           </v-navigation-drawer>
