@@ -30,10 +30,7 @@
 
 definePageMeta({
   layout: 'nologed',
-  middleware: 'guest', 
-  auth: { 
-    authenticatedRedirectUrl: '/sign-in' 
-  } 
+  middleware: 'guest'
 })
 
 </script>
