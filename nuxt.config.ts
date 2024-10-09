@@ -3,11 +3,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
-    // loaders: {
-    //   scss: {
-    //     implementation: require('sass'),
-    //   },
-    // },
   },
   css: ['~/assets/main.scss'],
   modules: [
@@ -34,12 +29,6 @@ export default defineNuxtConfig({
       },
     }
   },
-  // publicRuntimeConfig: {
-  //   clerkFrontendApi: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
-  // // },
-  // privateRuntimeConfig: {
-  //   clerkApiKey: process.env.NUXT_CLERK_SECRET_KEY || '',
-  // },
   app: {
     head: {
       htmlAttrs:{

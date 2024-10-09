@@ -19,7 +19,7 @@
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
     "vue": "latest",
-    "vue-clerk": "^0.6.16",
+    "vue-clerk": "^0.6.17",
     "vue-router": "latest"
   },
   "devDependencies": {

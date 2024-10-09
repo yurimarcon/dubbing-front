@@ -300,7 +300,7 @@
     snakecase-keys "5.4.4"
     tslib "2.4.1"
 
-"@clerk/shared@2.9.0", "@clerk/shared@^2.8.4":
+"@clerk/shared@2.9.0", "@clerk/shared@^2.9.0":
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-2.9.0.tgz#dcf7c02628806da6fdc185dc780c38e2669b1eac"
   integrity sha512-DAqxJbmQ3QnQXZepG2InLC7Hdq+4T9/+A/kwtMQtAyQcsZoDwZ1TqVJkrqZ55lJIAkR97HEn3/g+g1ySspdEfA==
@@ -311,7 +311,7 @@
     std-env "^3.7.0"
     swr "^2.2.0"
 
-"@clerk/types@4.25.0", "@clerk/types@^4.23.0":
+"@clerk/types@4.25.0", "@clerk/types@^4.25.0":
   version "4.25.0"
   resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.25.0.tgz#932520c2381b6686ff1cff816f276b51e5472590"
   integrity sha512-p2IyJ0q5WF1e976L1pS1J6Mb5ducfkUC31DR1EvMjPwJkrlWJdAMCPc+zqRRAePVy/JBVK2gEKbUVtJ6/jrpag==
@@ -5433,13 +5433,13 @@ vue-bundle-renderer@^2.1.0:
   dependencies:
     ufo "^1.5.3"
 
-vue-clerk@^0.6.16:
-  version "0.6.16"
-  resolved "https://registry.yarnpkg.com/vue-clerk/-/vue-clerk-0.6.16.tgz#95260549eec1c62c4ed245d7cb2218835f42b201"
-  integrity sha512-qXSoXI9/tSXlL/CVNuJLp+MZZwyPka6GNLcF7yhpZ97VMQs1rWHsqgVAdCAyz35lQu/KJMRdlk7h7Q/MathLsw==
+vue-clerk@^0.6.17:
+  version "0.6.17"
+  resolved "https://registry.yarnpkg.com/vue-clerk/-/vue-clerk-0.6.17.tgz#e83fa7ecac819bbe3569ac60bbfd8aae053886d2"
+  integrity sha512-Ioio305OaOlWvUq33gsGW/Iva7m8/lru29w/55AtCxg7f1kpDsSapi5zorZWiJ3F0r9h1yUdmZfrk6CdWSUzEw==
   dependencies:
-    "@clerk/shared" "^2.8.4"
-    "@clerk/types" "^4.23.0"
+    "@clerk/shared" "^2.9.0"
+    "@clerk/types" "^4.25.0"
 
 vue-demi@^0.14.10:
   version "0.14.10"
