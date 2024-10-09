@@ -1,9 +1,6 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-  router: {
-    middleware: ['removeClerkParam']
-  },
   build: {
     transpile: ['vuetify'],
     // loaders: {
