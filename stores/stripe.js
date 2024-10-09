@@ -5,13 +5,6 @@ export const useStripeStore = defineStore('stripe', {
     url_base: "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/api/payment/",
   }),
   actions: {
-    async createPortalSession(user_stripe_id){
-        return await $fetch(this.url_base + "create-portal-session", {
-            method: "POST",
-            body: user_stripe_id
-        })
-        .then(res => res) 
-    },
     async createUser(name, email) {
         return await $fetch(this.url_base + "create-customer", {
             method: "POST",
