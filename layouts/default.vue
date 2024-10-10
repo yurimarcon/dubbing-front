@@ -1,8 +1,13 @@
 <script setup>
 import { useUserStore } from '@/stores/user'
-import { useStripeStore } from '@/stores/stripe'
 const storeUser = useUserStore();
-const storeStripe = useStripeStore()
+
+definePageMeta({
+  middleware: "auth",
+  auth: {
+    guestRedirectUrl: "/sign-in",
+  },
+});
 
 // // Clerk user
 const { user } = useUser();
@@ -14,15 +19,9 @@ watchEffect(() => {
       user.value.id, 
       user.value.primaryEmailAddress?.emailAddress
     );
+    storeUser.getUserOnDatabase();
   }
 });
-
-onMounted( async ()=>{
-  setTimeout(async() => {
-    if(storeUser?.id)
-      storeUser.getUserOnDatabase();
-  }, 3000)
-})
 
 const drawer = ref(null);
 
