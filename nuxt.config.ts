@@ -13,8 +13,7 @@ export default defineNuxtConfig({
       })
     },
     "@pinia/nuxt",
-    "vue-clerk/nuxt",
-    "@nuxtjs/pwa"
+    "vue-clerk/nuxt"
   ],
   clerk: {
     appearance: { 
