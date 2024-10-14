@@ -74,7 +74,9 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
               </v-img>
             </NuxtLink>
 
-            <card-menu :processId="p.process_id" />
+            <card-menu
+            v-if="p.statusDescription == 'Conclude'"
+            :processId="p.process_id" />
           </div>
 
           <v-card-title
