@@ -86,7 +86,7 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
           </v-card-title>
 
           <v-card-subtitle class="mb-2">
-            {{ p.start_time }}
+            {{ new Date(`${p.start_time} UTC`).toLocaleString() }}
           </v-card-subtitle>
           <v-card-subtitle class="mb-2">
             {{ p.statusDescription }}

@@ -5,7 +5,7 @@
     </ClerkLoading>
     <ClerkLoaded></ClerkLoaded>
     <ClerkLoaded>
-      <v-app-bar color="primary" density="compact">
+      <v-app-bar color="primary" density="compact" class="app-bar">
         <template v-slot:prepend>
           <NuxtLink to="/">
             <v-btn color="white" icon="mdi-translate-variant"></v-btn>
@@ -20,7 +20,7 @@
 
       <v-footer app absolute color="primary" dark>
         <v-col class="text-center">
-          <span>&copy; 2024 Video Translator - All rights reserved</span>
+          <span>&copy; 2024 Class Translator - All rights reserved</span>
         </v-col>
       </v-footer>
     </ClerkLoaded>
@@ -28,7 +28,11 @@
 </template>
 
 <style scoped>
-v-footer {
+.app-bar{
+  opacity: 0.8;
+}
+footer{
+  opacity: 0.8 !important;
   position: fixed;
   bottom: 0;
   width: 100%;
