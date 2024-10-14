@@ -57,9 +57,11 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
               <v-img
                 class="align-end"
                 :src="
-                  p.unify_audio_done == '100%'
-                    ? '/img/video.svg'
-                    : '/img/cube-ai.gif'
+                  p.statusDescription == 'InQueue'
+                    ? '/img/load-fly.gif' // waiting to process
+                    : p.statusDescription != 'Conclude'
+                      ? '/img/cube-ai.gif'// in process
+                      : '/img/video.svg' // Done
                 "
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 height="150px"
@@ -83,6 +85,9 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
 
           <v-card-subtitle class="mb-2">
             {{ p.start_time }}
+          </v-card-subtitle>
+          <v-card-subtitle class="mb-2">
+            {{ p.statusDescription }}
           </v-card-subtitle>
 
           <v-card-text class="d-flex justify-space-between">

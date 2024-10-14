@@ -55,26 +55,26 @@ export const useTranslateVideoStore = defineStore("translate", {
       this.changeLoadUpload();
     },
     async sendProcess(process_type){
+      console.log(process_type)
       this.changeLoadUpload();
       const alertStore = useCustomAlertStore();
       this.process_type = process_type
 
-      if(process_type == 1 && !this.fileInput){
+      if(process_type == 1 && !this.link_web_media){
+        alertStore.showAlert("Web media link is required!!!", 4)
+        this.changeLoadUpload();
+        return false;
+      }else if(process_type == 2 && !this.fileInput){
         alertStore.showAlert("File is required!!!", 4)
         this.changeLoadUpload();
         return false;
       }
-      if(process_type == 2 && !this.link_web_media){
-        alertStore.showAlert("Web media link is required!!!", 4)
-        this.changeLoadUpload();
-        return false;
-      }
       if (!this.source_lang || !this.target_lang) {
-        alertStore.showAlert("Every fieal is required!!!", 4)
+        alertStore.showAlert("Every field is required!!!", 4)
         this.changeLoadUpload();
         return false;
       }
-      if(process_type == 1)
+      if(process_type == 2)
         await this.videoUpload();
       
       await this.createProcess();
@@ -125,7 +125,7 @@ export const useTranslateVideoStore = defineStore("translate", {
         const storeUser = useUserStore(); 
         const data = {
           "pk": "process-dubbing-video",
-          "sk": "admin 3",
+          "sk": storeUser.name,
           "source_lang": this.source_lang,
           "target_lang": this.target_lang,
           "user_name": storeUser.name,
