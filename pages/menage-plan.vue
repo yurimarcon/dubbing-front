@@ -73,11 +73,6 @@ const subscribeToPro = () => {
               <span class="text-h6 ml-4">Free</span>
             </v-card-title>
             <v-divider></v-divider>
-            <v-progress-linear
-              v-if="storeStripe.loading_card_plan"
-              color="primary"
-              indeterminate
-            ></v-progress-linear>
 
             <v-card-text class="mt-3">
               <v-row>
