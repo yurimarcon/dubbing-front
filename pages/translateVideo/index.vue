@@ -50,7 +50,7 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
         <v-card
           width="100%"
           class="mx-auto my-2 rounded-xl hover-up"
-          :class="p?.unify_audio_done != '100%' ? 'disabled-card' : ''"
+          :class="p.statusDescription != 'Conclude' && p.statusDescription != 'Error' && p.statusDescription != 'ExidedLimit'? 'disabled-card' : ''"
         >
           <div class="image-container">
             <NuxtLink :to="'/translateVideo/' + p.process_id">
@@ -59,9 +59,13 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
                 :src="
                   p.statusDescription == 'InQueue'
                     ? '/img/load-fly.gif' // waiting to process
-                    : p.statusDescription != 'Conclude'
-                      ? '/img/cube-ai.gif'// in process
-                      : '/img/video.svg' // Done
+                    : p.statusDescription == 'Conclude'
+                      ? '/img/video.svg' // Done
+                      : p.statusDescription == 'Error'
+                        ? '/img/cyber.png'
+                        : p.statusDescription == 'ExidedLimit'
+                          ? '/img/limit.jpg'
+                          : '/img/cube-ai.gif'// in process
                 "
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 height="150px"
@@ -75,7 +79,7 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
             </NuxtLink>
 
             <card-menu
-            v-if="p.statusDescription == 'Conclude'"
+            v-if="p.statusDescription == 'Conclude' || p.statusDescription == 'Error' || p.statusDescription == 'ExidedLimit'"
             :processId="p.process_id" />
           </div>
 
