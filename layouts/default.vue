@@ -9,7 +9,7 @@ definePageMeta({
   },
 });
 
-// // Clerk user
+// Clerk user
 const { user } = useUser();
 
 watchEffect(() => {
@@ -27,12 +27,7 @@ const drawer = ref(null);
 
 const items = [
   { text: "Translate Video", icon: "mdi-video-vintage", to: "/translateVideo" },
-  { text: "Manage Plan", icon: "mdi-laptop-account", to: "/account" },
-  // { text: "Plans", icon: "mdi-handshake", to: "/plans" },
-  // { text: "Translate Audio", icon: "mdi-volume-high", to: "/translateVoice" },
-  // { text: "Transcript Video", icon: "mdi-script-text-play", to: "/transcriptVideo" },
-  // { text: "Transcript Audio", icon: "mdi-speaker-message", to: "/transcriptVoice" },
-  // { text: "Generate audio from text", icon: "mdi-clipboard-text-play", to: "/transcriptVoice" },
+  { text: "Manage Plan", icon: "mdi-laptop-account", to: "/menage-plan" },
 ];
 
 </script>

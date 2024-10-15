@@ -80,15 +80,17 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
           </div>
 
           <v-card-title
-            class="truncate-text text-subtitle-1 text-medium-emphasis mt-2"
+            class="truncate-text text-subtitle-1 text-medium-emphasis"
           >
             {{ p.original_file_name }}
           </v-card-title>
 
-          <v-card-subtitle class="mb-2">
-            {{ new Date(`${p.start_time} UTC`).toLocaleString() }}
+          <v-card-subtitle class="">
+            <small>
+              {{ new Date(`${p.start_time} UTC`).toLocaleString() }}
+            </small>
           </v-card-subtitle>
-          <v-card-subtitle class="mb-2">
+          <v-card-subtitle class="">
             {{ p.statusDescription }}
           </v-card-subtitle>
 
