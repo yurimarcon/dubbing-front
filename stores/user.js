@@ -10,11 +10,15 @@ export const useUserStore = defineStore("user", {
     user_db: null
   }),
   actions: {
+    // Grava o usuário do Clerk no store
+    // assim que faz o login
     setUser(user_name, user_id, user_email) {
       this.name = user_name;
       this.id = user_id;
       this.email = user_email;
     },
+    // Busca o usuário na base e se não existir
+    // cria o usuário na base e na Stripe.
     async getUserOnDatabase(){
       if(this.id){
         this.user_db = await $fetch(this.url_base + this.id)
