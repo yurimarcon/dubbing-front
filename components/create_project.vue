@@ -6,7 +6,7 @@ import { useCustomAlertStore } from "@/stores/customAlert";
 const alertStore = useCustomAlertStore();
 
 const tab = ref(null);
-const languages = ["en", "es", "fr", "ar", "pt"];
+const languages = ["en", "es", "fr", "pt"];
 
 const send = () => {
   // if not change the tab did mean is first tab

@@ -39,9 +39,6 @@ export default defineNuxtConfig({
         {rel: 'preconnect', href: 'https://fonts.gstatic.com'},
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap'}
       ],
-      script:[
-        { src: 'https://js.stripe.com/v3/pricing-table.js' }
-      ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },

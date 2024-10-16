@@ -122,6 +122,14 @@ export const useTranslateVideoStore = defineStore("translate", {
     },
     async createProcess(){
       return new Promise(async(resolve, reject)=>{
+
+        let original_file_name = this.fileInput?.name
+        let original_file_path = this.storage_file_name
+        if(this.process_type == 1){
+          original_file_name = ""
+          original_file_path = ""
+        }
+        
         const storeUser = useUserStore(); 
         const data = {
           "pk": "process-dubbing-video",
@@ -130,8 +138,8 @@ export const useTranslateVideoStore = defineStore("translate", {
           "target_lang": this.target_lang,
           "user_name": storeUser.name,
           "user_id": storeUser.id,
-          "original_file_name": this.process_type == 1 ? this.fileInput?.name : "",
-          "original_file_path": this.process_type == 1 ? this.storage_file_name : "",
+          "original_file_name": original_file_name,
+          "original_file_path": original_file_path,
           "type": this.process_type,
           "link_web_midea": this.link_web_media
         }
@@ -215,11 +223,12 @@ export const useTranslateVideoStore = defineStore("translate", {
     },
     async deleteProcess(processId){
 
+      // this.videos =  this.videos.filter(video => video.processId !== processId);
+
       var url = this.url_base + "process/delete-process-by-process-id?processId=" + processId
       await $fetch(url,{
         method: "DELETE"
       });
-
       this.listProcess();
     }
   },

@@ -40,7 +40,7 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
     <v-row dense align="start" class="pa-4">
       <v-col
         v-for="p in storeVideo.videos"
-        :key="p.download_file_name"
+        :key="p.processId"
         cols="12"
         sm="6"
         md="4"
@@ -58,11 +58,14 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
                 class="align-end"
                 :src="
                   p.statusDescription == 'InQueue'
-                    ? '/img/load-fly.gif' // waiting to process
+                    // ? '/img/load-fly.gif' // waiting to process
+                    ? 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmVrazVqbGF3b2R4dXI3c2E1OWtndjRsOXBkcG91M3h4cjFwbmQ4ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aRYSqeF1cTkl62iJjS/giphy.webp'
                     : p.statusDescription == 'Conclude'
-                      ? '/img/video.svg' // Done
+                      ? '/img/video.jpg' // Done
+                      // ? '/img/video.svg' // Done
                       : p.statusDescription == 'Error'
-                        ? '/img/cyber.png'
+                        // ? '/img/cyber.png'
+                        ? '/img/error.jpg'
                         : p.statusDescription == 'ExidedLimit'
                           ? '/img/limit.jpg'
                           : '/img/cube-ai.gif'// in process
