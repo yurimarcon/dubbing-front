@@ -8,7 +8,6 @@ export const useStripeStore = defineStore('stripe', {
   }),
   actions: {
     async createUser(name, email) {
-        // return await $fetch(this.url_base + "create-customer", {
         return await $fetch(this.url_base + "create-customer-and-subscription", {
             method: "POST",
             body: JSON.stringify({

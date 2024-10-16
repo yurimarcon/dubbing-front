@@ -70,7 +70,7 @@ const limit_usage = computed(()=>
                     class="mb-6"
                     color="primary"
                     height="10"
-                    model-value="90"
+                    :model-value="limit_usage"
                     rounded="pill"
                   ></v-progress-linear>
                   <div>Você usou {{ limit_usage }}% do seu limite grátis</div>
