@@ -1,14 +1,11 @@
 <script setup>
 import { useTranslateVideoStore } from "~/stores/translate_video";
 const storeVideo = useTranslateVideoStore();
-const process = defineProps({
-  processId: {
-    type: String,
-  },
-});
+const props = defineProps(['process']);
 
 const deleteItem = () => {
-  storeVideo.deleteProcess(process.processId);
+  props.process.is_deleted = true;
+  storeVideo.deleteProcess(props.process.process_id);
 };
 const cancelProcessing = (item) => {
   // Lógica para cancelar processamento
@@ -26,7 +23,7 @@ const cancelProcessing = (item) => {
     </template>
 
     <v-list>
-      <v-list-item @click="deleteItem(p)">
+      <v-list-item @click="deleteItem()">
         <v-list-item-title>Delete</v-list-item-title>
       </v-list-item>
       <v-list-item disabled @click="cancelProcessing(p)">

@@ -18,13 +18,20 @@ const formatCurrency = (amount) => {
   else return "R$ 0,00";
 };
 
+const load_subscribe = ref(false);
 const subscribeToPro = () => {
   storeStripe.createPortalSession(storeUser?.user_db?.stripe_id);
+  load_subscribe.value = true;
+  setTimeout(() => {
+    load_subscribe.value = false;
+  }, 3000);
 };
 
-const limit_usage = computed(()=>
-  Math.round((storeUser?.user_db?.seconds_processed_in_month*100)/600)
+const limit_usage = computed(() =>
+  Math.round((storeUser?.user_db?.seconds_processed_in_month * 100) / 600)
 );
+
+onMounted(async () => await storeUser.getUserOnDatabase());
 </script>
 
 <template>
@@ -61,9 +68,9 @@ const limit_usage = computed(()=>
                   {{ storeStripe.subscription_data?.interval }}
                 </p>
 
-                <v-card-text 
-                class="text-medium-emphasis pa-6"
-                v-if="!storeStripe.subscription_data?.amount"
+                <v-card-text
+                  class="text-medium-emphasis pa-6"
+                  v-if="!storeStripe.subscription_data?.amount"
                 >
                   <v-progress-linear
                     bg-color="surface-variant"
@@ -114,6 +121,11 @@ const limit_usage = computed(()=>
                 <span class="ml-2">🚀</span>
                 <span class="text-h6 ml-2">Pro</span>
               </v-card-title>
+              <v-progress-linear
+                v-if="load_subscribe"
+                color="primary"
+                indeterminate
+              ></v-progress-linear>
               <v-divider></v-divider>
               <v-card-text class="mt-3">
                 <v-row>

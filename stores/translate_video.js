@@ -223,8 +223,6 @@ export const useTranslateVideoStore = defineStore("translate", {
     },
     async deleteProcess(processId){
 
-      // this.videos =  this.videos.filter(video => video.processId !== processId);
-
       var url = this.url_base + "process/delete-process-by-process-id?processId=" + processId
       await $fetch(url,{
         method: "DELETE"

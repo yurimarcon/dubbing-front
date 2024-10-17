@@ -1,4 +1,6 @@
 <script setup>
+import Card_limit_exceded from '~/components/card_limit_exceded.vue';
+
 const { id } = useRoute().params;
 // let base_url = "http://localhost:49988/";
 let base_url = "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/";
@@ -7,9 +9,6 @@ const { data: process } = await useFetch(
   base_url + "api/process/get-by-process-id?processId=" + id
 );
 
-// import { useTranslateVideoStore } from '@/stores/translate_video'
-// const videoStore = useTranslateVideoStore()
-
 const preUrlVideo = base_url + "api/storage/GetPreSignedUrlToWatchVideoByProcessId?processId=" + id
 const {data : urlPreSigned } = await useFetch(preUrlVideo)
 </script>
@@ -17,7 +16,31 @@ const {data : urlPreSigned } = await useFetch(preUrlVideo)
 <template>
   <v-container fluid fill-height>
     <v-row align="center" justify="center">
-      <v-col cols="12" md="8" class="d-flex justify-center">
+
+      <v-col 
+      v-if="process.statusDescription == 'ExidedLimit'"
+      cols="12" 
+      md="8" 
+      class="d-flex justify-center"
+      >
+        <card_limit_exceded></card_limit_exceded>
+      </v-col>
+      
+      <v-col 
+      v-else-if="process.statusDescription == 'Error'"
+      cols="12" 
+      md="8" 
+      class="d-flex justify-center"
+      >
+        <card-process-error></card-process-error>
+      </v-col>
+
+      <v-col 
+      v-else
+      cols="12" 
+      md="8" 
+      class="d-flex justify-center"
+      >
         <v-card class="mx-auto" max-width="1200" max-height="100vh">
           <v-card-media>
             <!-- Video Player -->
