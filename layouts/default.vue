@@ -26,8 +26,9 @@ watchEffect(() => {
 const drawer = ref(null);
 
 const items = [
-  { text: "Translate Video", icon: "mdi-video-vintage", to: "/translateVideo" },
-  { text: "Manage Plan", icon: "mdi-laptop-account", to: "/menage-plan" },
+  { text: "Traduzir Video", icon: "mdi-video-vintage", to: "/translateVideo" },
+  { text: "Contato", icon: "mdi-message-reply-text", to: "/contact-us" },
+  { text: "Plano", icon: "mdi-cash-multiple", to: "/menage-plan" },
 ];
 
 </script>

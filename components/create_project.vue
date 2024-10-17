@@ -9,8 +9,12 @@ const tab = ref(null);
 const languages = ["en", "es", "fr", "pt"];
 
 const send = () => {
+  const ProcessType = {
+    YouTube: 1,
+    Upload: 2
+  };
   // if not change the tab did mean is first tab
-  if (!tab) tab.value = 1;
+  if (!tab) tab.value = ProcessType.YouTube;
   const process_type = tab.value;
   videoStore.sendProcess(process_type).then((res) => {
     if (res) alertStore.showAlert("Process Created success!!!", 1);
@@ -26,7 +30,7 @@ const send = () => {
       class="rounded-pill"
       prepend-icon="mdi-translate-variant"
       variant="flat"
-      text="Translate"
+      text="Traduzir"
       color="primary"
       @click="videoStore.changeDialogUpload()"
     ></v-btn>
@@ -92,7 +96,6 @@ const send = () => {
               </v-card-text>
             </v-container>
           </v-tabs-window-item>
-          
         </v-tabs-window>
 
         <v-card-text>
@@ -100,7 +103,7 @@ const send = () => {
             <v-col cols="12" sm="6">
               <v-select
                 :items="languages"
-                label="Source Language"
+                label="Idioma origem"
                 required
                 variant="outlined"
                 v-model="videoStore.source_lang"
@@ -109,11 +112,18 @@ const send = () => {
             <v-col cols="12" sm="6">
               <v-select
                 :items="languages"
-                label="Target Language"
+                label="traduzir para"
                 required
                 variant="outlined"
                 v-model="videoStore.target_lang"
               ></v-select>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                v-model="videoStore.original_file_name"
+                label="Título do video"
+                variant="outlined"
+              ></v-text-field>
             </v-col>
           </v-row>
         </v-card-text>

@@ -2,6 +2,10 @@ import { defineStore } from "pinia";
 import {useUserStore} from './user'
 import { useCustomAlertStore } from '@/stores/customAlert'
 
+const ProcessType = {
+  YouTube: 1,
+  Upload: 2
+};
 
 export const useTranslateVideoStore = defineStore("translate", {
   state: () => ({
@@ -19,7 +23,8 @@ export const useTranslateVideoStore = defineStore("translate", {
     source_lang: "",
     target_lang: "",
     storage_file_name: "",
-    process_type: 1
+    process_type: 1,
+    original_file_name: ""
   }),
   actions: {
     changeDialogUpload() {
@@ -60,12 +65,17 @@ export const useTranslateVideoStore = defineStore("translate", {
       const alertStore = useCustomAlertStore();
       this.process_type = process_type
 
-      if(process_type == 1 && !this.link_web_media){
+      if(process_type == ProcessType.YouTube && !this.link_web_media){
         alertStore.showAlert("Web media link is required!!!", 4)
         this.changeLoadUpload();
         return false;
-      }else if(process_type == 2 && !this.fileInput){
+      }else if(process_type == ProcessType.Upload && !this.fileInput){
         alertStore.showAlert("File is required!!!", 4)
+        this.changeLoadUpload();
+        return false;
+      }
+      if (!this.original_file_name || this.original_file_name.length < 3){
+        alertStore.showAlert("File name is required and need be more then 3 characters.", 4)
         this.changeLoadUpload();
         return false;
       }
@@ -74,7 +84,7 @@ export const useTranslateVideoStore = defineStore("translate", {
         this.changeLoadUpload();
         return false;
       }
-      if(process_type == 2)
+      if(process_type == ProcessType.Upload)
         await this.videoUpload();
       
       await this.createProcess();
@@ -125,8 +135,8 @@ export const useTranslateVideoStore = defineStore("translate", {
 
         let original_file_name = this.fileInput?.name
         let original_file_path = this.storage_file_name
-        if(this.process_type == 1){
-          original_file_name = ""
+        if(this.process_type == ProcessType.YouTube){
+          original_file_name = this.original_file_name
           original_file_path = ""
         }
         

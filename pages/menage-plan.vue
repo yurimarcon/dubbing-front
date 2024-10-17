@@ -38,11 +38,10 @@ onMounted(async () => await storeUser.getUserOnDatabase());
   <v-container class="pa-4" fluid>
     <v-row class="d-flex justify-center">
       <v-col cols="12" md="6">
-        <!-- Card com detalhes do plano atual -->
         <v-card class="pa-4 elevation-3 rounded-lg mt-10">
           <v-card-title>
             <v-icon class="mb-1" left>mdi-account-circle</v-icon>
-            <span class="text-h6 ml-4">Your Current Plan</span>
+            <span class="text-h6 ml-4">Seu plano atual</span>
           </v-card-title>
           <v-divider></v-divider>
           <v-progress-linear
@@ -55,15 +54,15 @@ onMounted(async () => await storeUser.getUserOnDatabase());
             <v-row>
               <v-col>
                 <p>
-                  <strong>Plan:</strong>
+                  <strong>Plano:</strong>
                   {{ storeStripe.subscription_data?.name }}
                 </p>
                 <p>
                   <strong>Status:</strong>
-                  {{ storeStripe.subscription_data?.status }}
+                  {{storeStripe.subscription_data?.status.charAt(0).toUpperCase() + storeStripe.subscription_data?.status.slice(1).toLowerCase()}}
                 </p>
                 <p>
-                  <strong>Price:</strong>
+                  <strong>Preço:</strong>
                   {{ formatCurrency(storeStripe.subscription_data?.amount) }} /
                   {{ storeStripe.subscription_data?.interval }}
                 </p>
