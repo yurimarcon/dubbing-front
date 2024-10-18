@@ -20,7 +20,7 @@
 
       <v-footer app absolute color="primary" dark>
         <v-col class="text-center">
-          <span>&copy; 2024 Class Translator - All rights reserved</span>
+          <span>&copy; 2024 ClassDub - All rights reserved</span>
         </v-col>
       </v-footer>
     </ClerkLoaded>

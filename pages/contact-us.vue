@@ -1,14 +1,36 @@
 <script setup>
 import { useCustomAlertStore } from "@/stores/customAlert";
+import { useUserStore } from "@/stores/user";
 const alertStore = useCustomAlertStore();
+const userStore = useUserStore();
 
-const valid = ref(false)
-const subject = ref("")
-const description = ref("");
-const subjects = ['Bug', 'Sugestão', 'Dúvida', 'Outros']
+const valid = computed(()=>{
+  if (form.subject == "" || form.description == "" || form.description.length > 199)
+    return false
+  return true
+})
+const form = reactive({
+  subject: "",
+  description: "",
+  user: userStore.name,
+  email: userStore.email
+})
+const subjects = ['Erro ou Problema', 'Dúvida', 'Sugestão', 'Outros']
 const submitForm = ()=>{
-      if (valid.value) {
-        alertStore.showAlert("Em desenvolvimento...", 4)
+      if (valid) {
+        // const url = "https://pky434u1q7.execute-api.us-east-1.amazonaws.com/Prod/api/ticket/new-ticket"
+        const url = "http://localhost:49988/api/ticket/new-ticket"
+        let res = $fetch(url, {
+          method: "POST",
+          body: JSON.stringify(form)
+        })
+        .then(res=>{
+          alertStore.showAlert("Obrigado por entrar em contato!", 1)
+          form.subject = ""
+          form.description = ""
+          valid.value = false
+        })
+
       }
       return;
 }
@@ -24,25 +46,38 @@ const submitForm = ()=>{
             <span class="text-h6 ml-4">Atendimento</span>
           </v-card-title>
           <v-divider></v-divider>
+          <v-row class="my-4 d-flex justify-center">
+            <p>
+                Iremos responder o seu contato por e-mail.
+            </p>
+
+            <p>
+                Fique a vontade para reportar erros, 
+            </p>
+            <p>
+                problemas ou nos enviar sugestões.
+            </p>
+            <p>
+                🤓✌️
+            </p>
+          </v-row>
+          <v-divider></v-divider>
           <v-form 
           class="mt-4"
-          v-model="valid"
           >
             <v-select
-              v-model="subject"
+              v-model="form.subject"
               :items="subjects"
               label="Assunto"
               variant="outlined"
-              :rules="[v => !!v || 'Assunto é obrigatório']"
               required
             ></v-select>
 
             <v-textarea
-              v-model="description"
+              v-model="form.description"
               label="Descrição"
               variant="outlined"
               counter="200"
-              :rules="[v => !!v || 'Descrição é obrigatória']"
               required
             ></v-textarea>
 

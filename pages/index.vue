@@ -5,11 +5,12 @@
 
         <v-col cols="12">
           <h1 class="display-2 font-weight-bold mb-4">
-            <span >{{ tempText }}</span> to ClassDub
+            <span >{{ tempText }}</span> ao ClassDub
           </h1>
           <p class="subtitle-1 mb-8">
-            Translate your classes seamlessly in just a few clicks. From YouTube or Upload,
-            translate, and download!
+            Traduza aulas com poucos cliques!
+            Aulas do YouTube ou upload,
+            depois basta baixar ou assistir pela plataforma.
           </p>
 
           <nuxt-link to="/sign-in">
@@ -18,7 +19,7 @@
             variant="outlined" 
             class="ma-2"
             > 
-              Login 
+              Entrar 
             </v-btn>
           </nuxt-link>
 
@@ -40,7 +41,16 @@ definePageMeta({
 })
 
 // Lista de palavras "Bem-vindo" em diferentes idiomas
-const languages = ["Welcome", "Bienvenido", "Bienvenue", "Willkommen", "Benvenuto", "Bem-vindo", "欢迎", "ようこそ"];
+const languages = [
+      "Bem-vindo", 
+      "Bienvenido", 
+      "Welcome", 
+      "Bienvenuto", 
+      "Willkommen", 
+      "Benvenue", 
+      "欢迎", 
+      "ようこそ"
+      ];
 let tempText = ref("")
 
 // Configurações da animação de digitação
@@ -87,7 +97,7 @@ onMounted(()=>{
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
-  height: 100vh; 
+  height: 86vh; 
   color: white; 
 }
 h1 {
@@ -110,6 +120,11 @@ h1 span {
   display: inline-block;
   border-right: 2px solid;
   animation: blink 0.75s step-end infinite;
+}
+
+.v-btn{
+    background: linear-gradient(#1a1a1a, #1a1a1a) padding-box, linear-gradient(300deg, rgb(0, 191, 143),  rgb(117, 89, 255)) border-box;
+    border: 2px solid transparent;
 }
 
 /* Animação do cursor piscando */
