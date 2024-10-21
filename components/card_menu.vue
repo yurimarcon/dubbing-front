@@ -7,9 +7,9 @@ const deleteItem = () => {
   props.process.is_deleted = true;
   storeVideo.deleteProcess(props.process.process_id);
 };
-const cancelProcessing = (item) => {
-  // Lógica para cancelar processamento
-  console.log("Cancelando processamento do item:", item);
+const resendProcess = (item) => {
+  // Lógica para reenviar processamento
+  storeVideo.resendProcess(props.process);
 };
 </script>
 
@@ -24,10 +24,10 @@ const cancelProcessing = (item) => {
 
     <v-list>
       <v-list-item @click="deleteItem()">
-        <v-list-item-title>Delete</v-list-item-title>
+        <v-list-item-title>Excluir</v-list-item-title>
       </v-list-item>
-      <v-list-item disabled @click="cancelProcessing(p)">
-        <v-list-item-title>Cancel process</v-list-item-title>
+      <v-list-item disabled @click="resendProcess()">
+        <v-list-item-title>Reenviar</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-menu>

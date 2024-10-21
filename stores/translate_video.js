@@ -94,6 +94,20 @@ export const useTranslateVideoStore = defineStore("translate", {
       this.changeLoadUpload();
       return true;
     },
+    async resendProcess(processInput){
+      this.fileInput.name = processInput.original_file_name;
+      this.storage_file_name = processInput.original_file_path
+      this.original_file_name = processInput.original_file_name;
+      this.source_lang = processInput.source_lang;
+      this.target_lang = processInput.target_lang;
+      this.process_type = processInput.process_type;
+      this.link_web_midea = processInput.link_web_midea;
+
+      await this.createProcess();
+
+      this.listProcess()
+      return true;
+    },
     async videoUpload(){
       return new Promise(async(resolve, reject)=>{
   
