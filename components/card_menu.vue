@@ -26,7 +26,7 @@ const resendProcess = (item) => {
       <v-list-item @click="deleteItem()">
         <v-list-item-title>Excluir</v-list-item-title>
       </v-list-item>
-      <v-list-item disabled @click="resendProcess()">
+      <v-list-item :disabled="props.process.statusDescription == 'Conclude'" @click="resendProcess()">
         <v-list-item-title>Reenviar</v-list-item-title>
       </v-list-item>
     </v-list>

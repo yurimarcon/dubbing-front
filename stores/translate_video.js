@@ -34,6 +34,7 @@ export const useTranslateVideoStore = defineStore("translate", {
       this.target_lang = "";
       this.link_web_media = "";
       this.progress_upload = 0;
+      this.original_file_name = "";
     },
     changeLoadUpload() {
       this.load_upload = !this.load_upload;
@@ -95,7 +96,9 @@ export const useTranslateVideoStore = defineStore("translate", {
       return true;
     },
     async resendProcess(processInput){
-      this.fileInput.name = processInput.original_file_name;
+      this.fileInput = {
+        name: processInput.original_file_name
+      }
       this.storage_file_name = processInput.original_file_path
       this.original_file_name = processInput.original_file_name;
       this.source_lang = processInput.source_lang;
@@ -105,7 +108,7 @@ export const useTranslateVideoStore = defineStore("translate", {
 
       await this.createProcess();
 
-      this.listProcess()
+      this.listProcess();
       return true;
     },
     async videoUpload(){

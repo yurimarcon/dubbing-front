@@ -40,7 +40,7 @@ const submitForm = ()=>{
   <v-container class="pa-4">
     <v-row class="d-flex justify-center">
       <v-col cols="12" md="6">
-        <v-card class="pa-4 elevation-3 rounded-lg mt-10">
+        <v-card class="pa-4 elevation-3 rounded-lg mt-10 animate__animated animate__fadeIn">
           <v-card-title>
             <v-icon class="mb-1" left>mdi-message-reply-text</v-icon>
             <span class="text-h6 ml-4">Atendimento</span>

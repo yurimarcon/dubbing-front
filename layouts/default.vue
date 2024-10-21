@@ -1,4 +1,5 @@
 <script setup>
+import 'animate.css'
 import { useUserStore } from '@/stores/user'
 const storeUser = useUserStore();
 

@@ -30,8 +30,8 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
     <v-row
       v-if="!storeVideo.load_videos_screen && storeVideo.videos.length == 0"
     >
-      <v-col class="d-flex flex-column align-center">
-        <img src="/img/start.svg" width="300px" />
+      <v-col class="d-flex flex-column align-center animate__animated animate__fadeIn">
+        <img  src="/img/start.svg" width="300px" />
         <strong class="mx-auto mt-16 text-secondary"
           >You dont have any translation yet.</strong
         >
@@ -48,6 +48,7 @@ onUnmounted(() => clearInterval(storeVideo.intervalId));
         class="d-flex pa-4"
       >
       <card-video
+      class=" animate__animated animate__fadeIn"
       :video="video"
       ></card-video>
       </v-col>
