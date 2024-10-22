@@ -37,7 +37,7 @@ onMounted(async () => await storeUser.getUserOnDatabase());
 <template>
   <v-container class="pa-4" fluid>
     <v-row class="d-flex justify-center">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="6" class="animate__animated animate__fadeIn">
         <v-card class="pa-4 elevation-3 rounded-lg mt-10">
           <v-card-title>
             <v-icon class="mb-1" left>mdi-account-circle</v-icon>
