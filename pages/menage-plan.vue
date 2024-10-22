@@ -130,10 +130,10 @@ onMounted(async () => await storeUser.getUserOnDatabase());
                 <v-row>
                   <v-col>
                     <ul>
-                      <li>Videos ilimitados</li>
-                      <li>Maior velocide de processamento</li>
-                      <li>Prioridade em filas de processamento</li>
-                      <li>Suporte técnico</li>
+                      <li>120 minutos de vídeos por mês.</li>
+                      <li>Maior velocide de processamento.</li>
+                      <li>Prioridade em filas de processamento.</li>
+                      <li>Suporte técnico.</li>
                     </ul>
                     <p class="text-h5 mt-4">
                       <strong> R$ 29,90 / Mês </strong>
