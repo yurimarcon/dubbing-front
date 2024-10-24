@@ -17,7 +17,18 @@
             </strong>
           </NuxtLink>
         </template>
-      </v-app-bar>
+        <NuxtLink to="#comofunciona">Como funciona</NuxtLink>
+        <NuxtLink to="/#planos">Planos</NuxtLink>
+        <NuxtLink to="/sign-in">
+          <v-btn 
+          color="secondary" 
+          variant="flat" 
+          elevated 
+          text="Entrar"
+          class="rounded-pill"
+          ></v-btn>
+        </NuxtLink>
+        </v-app-bar>
 
       <v-main>
         <!-- O NuxtPage deve estar aqui -->
@@ -43,7 +54,7 @@
   font-size: 22px;
   color: antiquewhite !important;
 }
-footer{
+footer {
   opacity: 0.8 !important;
   position: fixed;
   bottom: 0;
