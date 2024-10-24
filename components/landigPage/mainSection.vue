@@ -49,10 +49,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-row dense class="text-center">
+  <v-row dense class="">
     <v-col cols="12" md="8">
+      <h1 class="display-2 font-weight-bold">
+        <span>{{ tempText }}</span>
+      </h1>
       <h1 class="display-2 font-weight-bold mb-4">
-        <span>{{ tempText }}</span> ao ClassDub
+        ao ClassDub
       </h1>
       <p class="subtitle-1 mb-8">
         Traduza aulas com poucos cliques! Aulas do YouTube ou upload, depois
@@ -83,7 +86,6 @@ onMounted(() => {
     class="d-none d-md-block"
     >
       <v-img 
-      style="margin-top: -60px;"
       src="/img/video-no-bg.png" 
       />
     </v-col>
@@ -92,11 +94,11 @@ onMounted(() => {
 
 <style scoped>
 .v-row{
-  margin: 150px 0 50px 0;
+  margin: 50px 0 50px 0;
 }
 
 h1 {
-  font-size: 58px;
+  font-size: 68px;
   background: linear-gradient(
     300deg,
     rgb(0, 191, 143),
@@ -109,10 +111,10 @@ h1 {
   white-space: nowrap;
   overflow: hidden;
   width: fit-content;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 p {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 h1 span {
