@@ -38,7 +38,7 @@
           </v-responsive>
         </v-card-media>
         <v-card-subtitle class="text-center">
-          <h3>Linus Torvalds - Como o Linux Começou</h3>
+          <h3>Esse video será substituído...</h3>
         </v-card-subtitle>
       </v-card>
     </v-col>
