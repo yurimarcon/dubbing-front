@@ -38,7 +38,7 @@
         <v-card-media>
           <!-- Video Player -->
           <v-responsive :aspect-ratio="16 / 9">
-            <iframe
+            <!-- <iframe
               width="560"
               height="315"
               src="https://www.youtube.com/embed/Oih5cphl3fo?si=TT5C1orymiXnqEHI"
@@ -47,18 +47,22 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
-            ></iframe>
-            <!-- <video controls>
+            ></iframe> -->
+            <video 
+            width="560"
+            height="315"
+            controls
+            >
                 <source 
-                    :src="urlPreSigned" 
+                    src="/demonstration.mp4" 
                     type="video/mp4" 
                     />
                 Your browser does not support the video tag.
-            </video> -->
+            </video>
           </v-responsive>
         </v-card-media>
         <v-card-subtitle class="text-center">
-          <h3>Esse video será substituído...</h3>
+          <h3>Veja como funciona a plataforma</h3>
         </v-card-subtitle>
       </v-card>
     </v-col>

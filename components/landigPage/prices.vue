@@ -1,3 +1,52 @@
+<script setup>
+
+const plans = [
+    {
+        title: "Free",
+        description: "Tenha acesso para testar a plataforma e conhecer seu potencial",
+        features: [
+            "Até 10 minutos por mês"
+        ],
+        amount: "R$0,00"
+    },
+    {
+        title: "Pro",
+        description: "Estude muito mais com um plano acessível e que cabe no seu bolso!!!",
+        features: [
+            "Até 60 minutos por mês",
+            "Processamento mais rápido",
+            "Suporte técnico",
+        ],
+        amount: "R$29,00"
+    },
+    // {
+    //     title: "Premium",
+    //     description: "Tenha acesso antecipado as novas features e melhorias de tradução!!!",
+    //     features: [
+    //         "Até 120 minutos por mês",
+    //         "Processamento mais rápido",
+    //         "Suporte técnico",
+    //         "Modelos de LLM avançados",
+    //         "Prioridade na fila de processamentos",
+    //     ],
+    //     amount: "R$49,00"
+    // },
+    {
+        title: "Enterprise",
+        description: "Entre em contato para montarmos o melhor plano para você.",
+        features: [
+            "Sem limite de minutos",
+            "Prioridade total",
+            "Ambiente dedicado",
+            "Solicitação de feature por demanda",
+            "SLA de atendimento",
+            "Modelos de LLM avançados",
+        ],
+        amount: "Consulte"
+    },
+]
+</script>
+
 <template>
   <v-container class="pa-md-12 pa-sm-6" fluid>
     <v-responsive class="text-center mx-auto mb-6 mb-md-12" max-width="700">
@@ -13,7 +62,7 @@
         cols="12"
         sm="6"
         md="4"
-        lg="3"
+        
         v-for="plan in plans"
         :key="plan.title"
         >
@@ -92,52 +141,5 @@
   </v-container>
 </template>
   
-<script setup>
 
-const plans = [
-    {
-        title: "Free",
-        description: "Tenha acesso para testar a plataforma e conhecer seu potencial",
-        features: [
-            "Até 10 minutos por mês"
-        ],
-        amount: "R$0,00"
-    },
-    {
-        title: "Pro",
-        description: "Estude muito mais com um plano acessível e que cabe no seu bolso!!!",
-        features: [
-            "Até 60 minutos por mês",
-            "Processamento mais rápido",
-            "Suporte técnico",
-        ],
-        amount: "R$29,00"
-    },
-    {
-        title: "Premium",
-        description: "Tenha acesso antecipado as novas features e melhorias de tradução!!!",
-        features: [
-            "Até 120 minutos por mês",
-            "Processamento mais rápido",
-            "Suporte técnico",
-            "Modelos de LLM avançados",
-            "Prioridade na fila de processamentos",
-        ],
-        amount: "R$49,00"
-    },
-    {
-        title: "Enterprise",
-        description: "Entre em contato para montarmos o melhor plano para você.",
-        features: [
-            "Sem limite de minutos",
-            "Prioridade total",
-            "Ambiente dedicado",
-            "Solicitação de feature por demanda",
-            "SLA de atendimento",
-            "Modelos de LLM avançados",
-        ],
-        amount: "Consulte"
-    },
-]
-</script>
   
