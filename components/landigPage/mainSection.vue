@@ -57,7 +57,7 @@ onMounted(() => {
         <h1 class="display-2 font-weight-bold" style="margin-bottom: -20px">
           <span>{{ tempText }}</span>
         </h1>
-        <h1 class="text-h4 text-md-h2 font-weight-bold my-6">ao ClassDub</h1>
+        <h1 class="text-h4 text-md-h2 font-weight-bold my-6">ao ClassDub-AI</h1>
         <!-- <div class="text-body-1 text-medium-emphasis mb-10"> -->
         <div class="text-sm-h5 text-subtitle-1 text-medium-emphasis mt-4 mb-6">
           Traduza videos com poucos cliques! Aulas online ou upload, faça download ou assista pela plataforma.
