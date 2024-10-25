@@ -55,12 +55,14 @@ export default defineNuxtConfig({
       script: [
         {
           type: 'application/ld+json',
-          json: {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ClassDub",
-            "url": "https://classdub.com"
-          }
+          children: JSON.stringify(
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "ClassDub",
+              "url": "https://classdub.com"
+            }
+          )
         }
       ]
     },
