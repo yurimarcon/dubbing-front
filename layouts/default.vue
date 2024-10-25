@@ -3,12 +3,12 @@ import 'animate.css'
 import { useUserStore } from '@/stores/user'
 const storeUser = useUserStore();
 
-definePageMeta({
-  middleware: "auth",
-  auth: {
-    guestRedirectUrl: "/sign-in",
-  },
-});
+// definePageMeta({
+//   middleware: "auth",
+//   auth: {
+//     guestRedirectUrl: "/sign-in",
+//   },
+// });
 
 // Clerk user
 const { user } = useUser();

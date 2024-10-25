@@ -49,51 +49,49 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-row dense class="">
-    <v-col cols="12" md="8">
-      <h1 class="display-2 font-weight-bold">
-        <span>{{ tempText }}</span>
-      </h1>
-      <h1 class="display-2 font-weight-bold mb-4">
-        ao ClassDub
-      </h1>
-      <p class="subtitle-1 mb-8">
-        Traduza aulas com poucos cliques! Aulas do YouTube ou upload, depois
-        basta baixar ou assistir pela plataforma.
-      </p>
+  <v-row dense id="description-main">
+    <div class="blur-background"></div> <!-- Div para o blur de fundo -->
+    <v-col cols="12" md="8" >
+      <div class="w-100 w-md-75" >
+        
+        <h1 class="display-2 font-weight-bold" style="margin-bottom: -20px">
+          <span>{{ tempText }}</span>
+        </h1>
+        <h1 class="text-h4 text-md-h2 font-weight-bold my-6">ao ClassDub</h1>
+        <!-- <div class="text-body-1 text-medium-emphasis mb-10"> -->
+        <div class="text-sm-h5 text-subtitle-1 text-medium-emphasis mt-4 mb-6">
+          Traduza videos com poucos cliques! Aulas online ou upload, faça download ou assista pela plataforma.
+        </div>
+        
+      </div>
 
       <nuxt-link to="/sign-in">
-        <v-btn 
-        color="primary" 
-        variant="flat"
-        class="ma-2 rounded-pill"
-        text="Entrar"
+        <v-btn
+          color="primary"
+          variant="flat"
+          class="ma-2 text-none rounded-pill"
+          text="Entrar"
         ></v-btn>
       </nuxt-link>
 
       <nuxt-link to="#comofunciona">
-        <v-btn 
-        color="primary"
-        variant="flat"
-        class="ma-2 rounded-pill btn-entrar"
-        text="Saiba mais"
+        <v-btn
+          append-icon="mdi-chevron-right"
+          color="primary"
+          variant="flat"
+          class="ma-2 text-none rounded-pill btn-gradient"
+          text="Saiba mais"
         ></v-btn>
       </nuxt-link>
-
     </v-col>
-    <v-col 
-    cols="4"
-    class="d-none d-md-block"
-    >
-      <v-img 
-      src="/img/video-no-bg.png" 
-      />
+    <v-col cols="4" class="d-none d-md-block">
+      <v-img src="/img/video-no-bg.png" style="z-index: 2;" />
     </v-col>
   </v-row>
 </template>
 
 <style scoped>
-.v-row{
+.v-row {
   margin: 50px 0 50px 0;
 }
 
@@ -111,21 +109,31 @@ h1 {
   white-space: nowrap;
   overflow: hidden;
   width: fit-content;
-  /* margin: 0 auto; */
 }
-p {
-  font-size: 25px;
+
+#description-main {
+  position: relative;
+}
+
+.blur-background {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Ajuste conforme necessário para cobrir a altura do h1 */
+  filter: blur(100px);
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--v-theme-primary)),
+    rgb(var(--v-theme-error))
+  );
+  z-index: 1; /* Coloca o blur atrás do conteúdo */
 }
 
 h1 span {
   display: inline-block;
   border-right: 2px solid;
   animation: blink 0.75s step-end infinite;
-}
-.btn-entrar{
-  background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
-    linear-gradient(300deg, rgb(0, 191, 143), rgb(117, 89, 255)) border-box;
-  border: 2px solid transparent;
 }
 
 /* Animação do cursor piscando */

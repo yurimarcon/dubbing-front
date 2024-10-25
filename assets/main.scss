@@ -54,3 +54,9 @@ opacity: 0;
 .cl-internal-16vtwdp, .cl-internal-lk7758{
   display: none;
 }
+
+.btn-gradient {
+  background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+    linear-gradient(300deg, rgb(0, 191, 143), rgb(117, 89, 255)) border-box !important;
+  border: 2px solid transparent !important;
+}

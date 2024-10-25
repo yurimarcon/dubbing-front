@@ -4,6 +4,13 @@ import { useUserStore } from "@/stores/user";
 const storeStripe = useStripeStore();
 const storeUser = useUserStore();
 
+definePageMeta({
+  middleware: "auth",
+  auth: {
+    guestRedirectUrl: "/sign-in",
+  },
+});
+
 watchEffect(() => {
   if (storeUser?.user_db?.stripe_id)
     storeStripe.getSubscription(storeUser?.user_db?.stripe_id);
@@ -99,7 +106,7 @@ onMounted(async () => await storeUser.getUserOnDatabase());
                   <v-col>
                     <ul>
                       <li>10 min de videos por mês</li>
-                      <li>Menor velocidade de processamento</li>
+                      <li>Processamento reduzido</li>
                       <li>Baixa prioridade em filas de processamento</li>
                       <li>Sem suporte técnico</li>
                     </ul>
@@ -130,9 +137,9 @@ onMounted(async () => await storeUser.getUserOnDatabase());
                 <v-row>
                   <v-col>
                     <ul>
-                      <li>120 minutos de vídeos por mês.</li>
-                      <li>Maior velocide de processamento.</li>
-                      <li>Prioridade em filas de processamento.</li>
+                      <li>60 minutos de vídeos por mês.</li>
+                      <li>Processamento mais rápido.</li>
+                      <li>Alta prioridade em filas de processamento.</li>
                       <li>Suporte técnico.</li>
                     </ul>
                     <p class="text-h5 mt-4">

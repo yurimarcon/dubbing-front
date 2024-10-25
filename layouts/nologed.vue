@@ -5,21 +5,19 @@
     </ClerkLoading>
     <ClerkLoaded></ClerkLoaded>
     <ClerkLoaded>
-      <v-app-bar color="primary" density="compact" class="app-bar">
-        <template v-slot:prepend>
-          <NuxtLink to="/" class="d-flex align-center ml-4">
-            <v-img 
-            style="width: 30px; height: 30px;"
-            src="/web-app-manifest-512x512.png" 
-            />
-            <strong class="text-h5 ml-2">
-              ClassDub
-            </strong>
-          </NuxtLink>
-        </template>
+      <v-layout>
+      <v-app-bar color="transparent" flat>
+        <div class="d-flex flex-1-1-0 ps-md-4">
+            <NuxtLink to="/" class="d-flex align-center ml-4">
+              <v-avatar
+                style="width: 30px; height: 30px"
+                image="/web-app-manifest-512x512.png"
+              />
+            </NuxtLink>
+          </div>
       </v-app-bar>
 
-      <v-main>
+      <v-main :min-height="$vuetify.display.mdAndUp ? 800 : 550">
         <!-- O NuxtPage deve estar aqui -->
         <NuxtPage />
       </v-main>
@@ -29,6 +27,7 @@
           <span>&copy; 2024 ClassDub - All rights reserved</span>
         </v-col>
       </v-footer>
+    </v-layout>
     </ClerkLoaded>
   </v-app>
 </template>

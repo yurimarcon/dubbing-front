@@ -4,6 +4,13 @@ import { useUserStore } from "@/stores/user";
 const alertStore = useCustomAlertStore();
 const userStore = useUserStore();
 
+definePageMeta({
+  middleware: "auth",
+  auth: {
+    guestRedirectUrl: "/sign-in",
+  },
+});
+
 const valid = computed(()=>{
   if (form.subject == "" || form.description == "" || form.description.length > 199)
     return false

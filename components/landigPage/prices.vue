@@ -52,6 +52,7 @@
                       text="Escolher"
                       variant="flat"
                       width="100%"
+                      @click="$router.push('/menage-plan')"
                     />
         
                     <div class="text-caption text-medium-emphasis w-75 text-center">
