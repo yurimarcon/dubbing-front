@@ -44,10 +44,22 @@ export default defineNuxtConfig({
         { hid: 'og:image', property: 'og:image', content: '/favicon-48x48.png' },
       ],
       link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {rel: 'preconnect', href: 'https://fonts.gstatic.com'},
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap'}
       ],
+      script: [
+        {
+          type: 'application/ld+json',
+          json: {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ClassDub",
+            "url": "https://classdub.com"
+          }
+        }
+      ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
