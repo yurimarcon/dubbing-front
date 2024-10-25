@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         { hid: 'og:description', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
         { hid: 'og:image', property: 'og:image', content: 'https://classdub.com/web-app-manifest-512x512.png' },
         { hid: 'og:image:type', property: 'og:image:type', content: 'image/jpeg' },
-        { hid: 'og:url', property: 'og:url', content: 'https://classdub.com' }
+        // { hid: 'og:url', property: 'og:url', content: 'https://classdub.com' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
