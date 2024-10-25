@@ -13,7 +13,8 @@ export default defineNuxtConfig({
       })
     },
     "@pinia/nuxt",
-    "vue-clerk/nuxt"
+    "vue-clerk/nuxt",
+    "@stefanobartoletti/nuxt-social-share"
   ],
   clerk: {
     appearance: { 
@@ -29,6 +30,10 @@ export default defineNuxtConfig({
       },
     }
   },
+  socialShare: {
+    baseUrl: 'https://www.classdub.com' // required!
+    // other optional module options
+  },
   app: {
     head: {
       htmlAttrs:{
@@ -39,11 +44,11 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'Traduza video aulas com poucos cliques.' },
         { hid: 'keywords', name: 'keywords', content: 'tradução, video, aula, video-aula, curso' },
         // Meta tags para redes sociais
-        { hid: 'og:title', property: 'og:title', content: 'ClassDub' },
-        { hid: 'og:site_name', property: 'og:site_name', content: 'ClassDub' },
-        { hid: 'og:description', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
-        { hid: 'og:image', property: 'og:image', content: 'https://classdub.com/web-app-manifest-1200x630.png' },
-        { hid: 'og:image:type', property: 'og:image:type', content: 'image/jpeg' },
+        { hid: 'og-title', property: 'og:title', content: 'ClassDub' },
+        { hid: 'og-site_name', property: 'og:site_name', content: 'ClassDub' },
+        { hid: 'og-description', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
+        { hid: 'og-image', property: 'og:image', content: 'https://classdub.com/web-app-manifest-1200x630.png' },
+        { hid: 'og-image:type', property: 'og:image:type', content: 'image/jpeg' },
         // { hid: 'og:url', property: 'og:url', content: 'https://classdub.com' }
       ],
       link: [

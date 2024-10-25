@@ -13,6 +13,7 @@
     "@clerk/backend": "^1.13.8",
     "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.5.4",
+    "@stefanobartoletti/nuxt-social-share": "^1.2.0",
     "@stripe/stripe-js": "^4.7.0",
     "@vue/compiler-sfc": "^3.5.11",
     "animate.css": "^4.1.1",

@@ -14,7 +14,7 @@ const items = [
     </ClerkLoading>
     <ClerkLoaded></ClerkLoaded>
     <ClerkLoaded>
-      <v-layout> 
+      <v-layout>
         <v-navigation-drawer
           v-model="drawer"
           color="primary"
@@ -55,15 +55,17 @@ const items = [
           </div>
 
           <div class="d-flex flex-1-1-0 pe-3">
-              <v-btn
-                append-icon="mdi-chevron-right"
-                class="ms-auto text-none rounded-pill"
-                variant="flat"
-                color="primary"
-                slim
-                text="Entrar"
-                @click="$router.push('/sign-in')"
-              >
+            <!-- <SocialShare network="whatsapp" :styled="true" url="https://classdub.com"/> -->
+
+            <v-btn
+              append-icon="mdi-chevron-right"
+              class="ms-auto text-none rounded-pill"
+              variant="flat"
+              color="primary"
+              slim
+              text="Entrar"
+              @click="$router.push('/sign-in')"
+            >
             </v-btn>
           </div>
         </v-app-bar>
