@@ -118,9 +118,9 @@ h1 {
 .blur-background {
   position: absolute;
   top: 150px;
-  left: 0;
-  width: 100%;
-  height: 100px; /* Ajuste conforme necessário para cobrir a altura do h1 */
+  right: 0;
+  width: 45%;
+  height: 150px; /* Ajuste conforme necessário para cobrir a altura do h1 */
   filter: blur(100px);
   background: linear-gradient(
     to bottom right,
@@ -148,9 +148,14 @@ h1 span {
 }
 
 @media (max-width: 600px) {
-  /* Ajuste o valor conforme necessário */
   h1 {
-    font-size: 32px; /* Tamanho da fonte menor para dispositivos móveis */
+    font-size: 32px;
+  }
+}
+@media (max-width: 960px) {
+  .blur-background {
+    width: 100%;
+    height: 80px;
   }
 }
 </style>
