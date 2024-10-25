@@ -34,6 +34,15 @@ export default defineNuxtConfig({
       htmlAttrs:{
         lang:"pt-BR",
       },
+      title: 'ClassDub',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Traduza video aulas com poucos cliques.' },
+        { hid: 'keywords', name: 'keywords', content: 'tradução, video, aula, video-aula, curso' },
+        // Meta tags para redes sociais
+        { hid: 'og:title', property: 'og:title', content: 'ClassDub' },
+        { hid: 'og:description', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
+        { hid: 'og:image', property: 'og:image', content: '/favicon-48x48.png' },
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {rel: 'preconnect', href: 'https://fonts.gstatic.com'},
