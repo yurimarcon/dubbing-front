@@ -46,10 +46,10 @@ export default defineNuxtConfig({
         // Meta tags para redes sociais
         { hid: 'og-title', property: 'og:title', content: 'ClassDub' },
         { hid: 'og-site_name', property: 'og:site_name', content: 'ClassDub' },
-        { hid: 'og-description', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
+        { hid: 'og-desc', property: 'og:description', content: 'Traduza video aulas com poucos cliques.' },
         { hid: 'og-image', property: 'og:image', content: 'https://classdub.com/web-app-manifest-1200x630.png' },
         { hid: 'og-image:type', property: 'og:image:type', content: 'image/jpeg' },
-        // { hid: 'og:url', property: 'og:url', content: 'https://classdub.com' }
+        { hid: 'og-url', property: 'og:url', content: 'https://classdub.com' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
