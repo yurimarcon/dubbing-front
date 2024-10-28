@@ -54,10 +54,10 @@ onMounted(() => {
     <v-col cols="12" md="8" >
       <div class="w-100 w-md-75" >
         
-        <h1 class="display-2 font-weight-bold" style="margin-bottom: -20px">
+        <h1 class="display-2 font-weight-bold h1-landing-page" style="font-size: 68px; margin-bottom: -20px">
           <span>{{ tempText }}</span>
         </h1>
-        <h1 class="text-h4 text-md-h2 font-weight-bold my-6">ao ClassDub-AI</h1>
+        <h1 class="text-h4 text-md-h2 font-weight-bold my-6 h1-landing-page">ao ClassDub-AI</h1>
         <!-- <div class="text-body-1 text-medium-emphasis mb-10"> -->
         <div class="text-sm-h5 text-subtitle-1 text-medium-emphasis mt-4 mb-6">
           Traduza videos com poucos cliques! Aulas online ou upload, faça download ou assista pela plataforma.
@@ -95,21 +95,21 @@ onMounted(() => {
   margin: 50px 0 50px 0;
 }
 
-h1 {
+/* h1 {
   font-size: 68px;
   background: linear-gradient(
     300deg,
     rgb(0, 191, 143),
     rgb(117, 89, 255)
-  ); /* Gradiente horizontal */
+  );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Faz o texto ficar transparente, exibindo o gradiente */
+  -webkit-text-fill-color: transparent;
 
   font-family: "Arial", sans-serif;
   white-space: nowrap;
   overflow: hidden;
   width: fit-content;
-}
+} */
 
 #description-main {
   position: relative;

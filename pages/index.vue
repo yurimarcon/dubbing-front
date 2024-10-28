@@ -6,14 +6,16 @@
       <LandigPageHowitworks  />
       <v-divider id="precos"/>
       <LandigPagePrices  />
+      <v-divider id="desenvolva-projetos"/>
+      <LandigPageDevelopProjects  />
     </v-container>
   </v-app>
 </template>
   
 <script setup>
+
 definePageMeta({
   layout: "landingpage",
   middleware: "guest",
 });
 </script>
-  

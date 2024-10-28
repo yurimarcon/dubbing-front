@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <v-row dense class="d-flex justify-center flex-row-reverse">
     <v-col
@@ -5,7 +9,7 @@
     lg="6"
     >
     <v-responsive class="text-center mx-auto mb-2" max-width="700">
-        <h1 class="text-lg-h3 font-weight-bold mb-4 text-h4">
+        <h1 class="text-lg-h3 font-weight-bold mb-4 text-h4 ">
           Como funciona
         </h1>
 
@@ -18,7 +22,7 @@
           dentro de alguns minutos sua aula estará traduzida.
         </p>
 
-        <nuxt-link to="#comofunciona">
+        <nuxt-link to="/sign-in">
         <v-btn
           append-icon="mdi-chevron-right"
           color="primary"

@@ -27,6 +27,22 @@ a{
   font-weight: 300;
 }
 
+.h1-landing-page{
+  font-size: 68px;
+  background: linear-gradient(
+    300deg,
+    rgb(0, 191, 143),
+    rgb(117, 89, 255)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+
+  font-family: "Arial", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  width: fit-content;
+}
+
 .v-card--variant-elevated {
   color: $generic-text-color !important;
 }

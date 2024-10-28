@@ -191,7 +191,9 @@ export const useTranslateVideoStore = defineStore("translate", {
       const storeUser = useUserStore();
       
       try {
-        await fetch(`${this.url_base}process/process-by-user?userId=${storeUser.id}`)
+        const userId = storeUser.id;
+        // const userId = "user_2o44GkSBQfh6BSJYvoGl4QZlGfT"
+        await fetch(`${this.url_base}process/process-by-user?userId=${userId}`)
           .then((res) => {
             if (!res.ok) {
               throw new Error(`HTTP error! status: ${res.status}`);
