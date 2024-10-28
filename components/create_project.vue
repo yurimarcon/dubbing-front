@@ -35,7 +35,7 @@ const send = () => {
       @click="videoStore.changeDialogUpload()"
     ></v-btn>
 
-    <v-dialog v-model="videoStore.dialog_upload" max-width="600">
+    <v-dialog v-model="videoStore.dialog_upload" max-width="600" persistent>
       <v-card :disabled="videoStore.load_upload">
         <!-- prepend-icon="mdi-translate-variant"
       title="Upload video" -->
