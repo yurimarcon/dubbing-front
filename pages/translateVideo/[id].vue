@@ -41,7 +41,7 @@ const {data : urlPreSigned } = await useFetch(preUrlVideo)
       md="8" 
       class="d-flex justify-center"
       >
-        <v-card class="mx-auto rounded-xl">
+        <v-card class="mx-auto rounded-xl animate__animated animate__fadeIn">
           <v-card-media>
             <!-- Video Player -->
             <v-responsive :aspect-ratio="16 / 9">

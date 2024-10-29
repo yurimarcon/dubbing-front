@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="d-flex align-center justify-center fill-height full-width"
+    class="d-flex align-center justify-center fill-height full-width animate__animated animate__fadeIn"
   >
     <sign-in></sign-in>
   </v-container>
