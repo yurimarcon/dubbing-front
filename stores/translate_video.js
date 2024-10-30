@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import {useUserStore} from './user'
 import { useCustomAlertStore } from '@/stores/customAlert'
+import { toHandlerKey } from "vue";
 
 const ProcessType = {
   YouTube: 1,
@@ -49,8 +50,7 @@ export const useTranslateVideoStore = defineStore("translate", {
       }
 
       try {
-
-        const urlPresigned = `${this.url_base}storage/Get-GetPreSignedUrlRequest-Url?fileName=${this.fileInput.name}&userName=${storeUser.name}`;        
+        const urlPresigned = `${this.url_base}storage/Get-GetPreSignedUrlRequest-Url?fileName=${encodeURIComponent(this.fileInput.name)}&userName=${encodeURIComponent(storeUser.name)}`;
         const {url, fileName} = await $fetch(urlPresigned);
         this.url_persigned_to_upload = url;
         this.storage_file_name = fileName;
@@ -61,7 +61,6 @@ export const useTranslateVideoStore = defineStore("translate", {
       this.changeLoadUpload();
     },
     async sendProcess(process_type){
-      console.log(process_type)
       this.changeLoadUpload();
       const alertStore = useCustomAlertStore();
       this.process_type = process_type
