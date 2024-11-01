@@ -190,12 +190,8 @@ export const useTranslateVideoStore = defineStore("translate", {
       const storeUser = useUserStore();
       
       try {
-        // const userId = storeUser.id;
-        // const userId = "user_2oFr79Sb65NnkzvlDNRvuKiUT52";
-        const userId = "user_2nswzOHxkNBdobICxkzrx0ruFEl";
-        // const userId = "user_2oFr79Sb65NnkzvlDNRvuKiUT52";
-        // const userId = "user_2oFr79Sb65NnkzvlDNRvuKiUT52";
-        // const userId = "user_2o44GkSBQfh6BSJYvoGl4QZlGfT"
+        const userId = storeUser.id;
+        
         await fetch(`${this.url_base}process/process-by-user?userId=${userId}`)
           .then((res) => {
             if (!res.ok) {
