@@ -6,7 +6,7 @@ import { useCustomAlertStore } from "@/stores/customAlert";
 const alertStore = useCustomAlertStore();
 
 const tab = ref(null);
-const languages = ["en", "es", "fr", "pt"];
+const languages = ["en", "es", "fr", "ru", "pt"];
 
 const send = () => {
   const ProcessType = {
