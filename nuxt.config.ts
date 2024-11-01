@@ -83,6 +83,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   runtimeConfig: {
+    public:{
       GTAGID: 'G-PXKM17K2ZE'
+    }
   },
 })
