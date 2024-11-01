@@ -1,5 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {  
-    // if (process.env.NODE_ENV !== 'production') return; // Só executa em produção
+    if (process.env.NODE_ENV !== 'production') return; // Só executa em produção
   
     const { GTAGID } = useRuntimeConfig().public;
     
